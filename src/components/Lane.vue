@@ -8,7 +8,7 @@
         </v-toolbar-title>
       </v-badge>
       <v-spacer></v-spacer>
-      <card-add-button :statusId="id"></card-add-button>
+      <card-add-button :statusId="id" :board="true"></card-add-button>
     </v-toolbar>
     <!-- HACK: Vue.draggableで移動元のstatusを渡すためにstatusのidを埋め込む -->
     <draggable :list="cards" :options="{group:'card'}" @update="changePriority" @add="fromOtherLane" class="lane">
@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     cards () {
-      return this.$store.getters.getCardByStatus(this.id)
+      return this.$store.getters.getActiveCardByStatus(this.id)
     },
     numberofCards () {
       return this.cards.length

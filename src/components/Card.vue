@@ -2,9 +2,9 @@
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
   <v-layout row :id="`card-${card.id}`">
     <v-flex xs12>
-      <v-card class="card--flex-toolbar mb-3" color="grey lighten-3" hover>
+      <v-card class="mb-2" color="grey lighten-3" hover>
         <v-toolbar card dense>
-          <v-toolbar-title class="grey--text text--darken-3">{{card.title}}</v-toolbar-title>
+          <v-toolbar-title>{{card.title}}</v-toolbar-title>
           <v-spacer></v-spacer>
           <card-edit-button :id="card.id"></card-edit-button>
           <card-menu :card="card"></card-menu>
@@ -20,6 +20,7 @@
 <script>
 import CardMenu from './CardMenu.vue'
 import CardEditButton from './CardEditButton.vue'
+
 export default {
   name: 'Card',
   props: {

@@ -4,7 +4,7 @@
       <v-icon>add</v-icon>
     </v-btn>
     <v-dialog v-model="dialog" max-width="500px">
-      <card-add-form :statusId="statusId" v-model="dialog"></card-add-form>
+      <card-add-form :statusId="statusId" v-model="dialog" :board="board"></card-add-form>
     </v-dialog>
   </div>
 </template>
@@ -15,7 +15,8 @@ import CardAddForm from './CardAddForm.vue'
 export default {
   name: 'CardAddButton',
   props: {
-    statusId: Number
+    statusId: Number,
+    board: Boolean
   },
   components: {
     CardAddForm

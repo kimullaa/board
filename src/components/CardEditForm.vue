@@ -55,9 +55,9 @@ export default {
           title: this.title,
           details: this.details
         })
+        this.clear()
+        this.$emit('input', false)
       }
-      this.clear()
-      this.$emit('input', false)
     },
     clear: function () {
       this.$refs.form.reset()

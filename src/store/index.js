@@ -9,65 +9,74 @@ export default new Vuex.Store({
       {
         id: 0,
         status: 0,
-        title: 'sample1',
+        title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: false
       },
       {
         id: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 2,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 3,
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 4,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 5,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 6,
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 7,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       },
       {
         id: 8,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
-        priority: 0
+        priority: 0,
+        board: true
       }
     ],
     statuses: [
@@ -89,11 +98,19 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-    getCardByStatus: (state) => (id) => {
-      return state.cards.filter(card => card.status === id)
+    getActiveCardByStatus: (state) => (id) => {
+      return state.cards
+      .filter(card => card.status === id)
+      .filter(card => card.board)
+    },
+    getBacklog: state => {
+      return state.cards.filter(card => !card.board)
     },
     getCard: (state) => (id) => {
       return state.cards.find(card => card.id === id)
+    },
+    getInitialLane: state => {
+      return 0
     },
     getLastLane: state => {
       return 2
@@ -113,6 +130,7 @@ export default new Vuex.Store({
     deleteCardByStatus (state, id) {
       state.cards
       .filter(card => card.status === Number(id))
+      .filter(card => card.board)
       .forEach(value => state.cards.splice(state.cards.indexOf(value), 1))
     },
     createCard (state, card) {
@@ -120,7 +138,8 @@ export default new Vuex.Store({
         id: Math.floor(Math.random() * 10000), // 適当にidふる
         title: card.title,
         details: card.details,
-        status: card.status
+        status: card.status,
+        board: card.board
       })
     },
     updateCard (state, card) {
@@ -132,6 +151,12 @@ export default new Vuex.Store({
         state.statuses.find(item => item.id === Number(status.id)).name = status.name
         state.statuses.find(item => item.id === Number(status.id)).color = status.color
       })
+    },
+    moveToBoard (state, id) {
+      state.cards.find(card => card.id === Number(id)).board = true
+    },
+    moveToBacklog (state, id) {
+      state.cards.find(card => card.id === Number(id)).board = false
     }
   }
 })

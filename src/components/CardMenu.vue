@@ -17,6 +17,13 @@
         </v-list-tile>
         <v-divider></v-divider>
       </template>
+      <v-list-tile @click="moveToBacklog">
+        <v-list-tile-action>
+          <v-icon>list</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>バックログに戻す</v-list-tile-content>
+      </v-list-tile>
+      <v-divider></v-divider>
       <v-list-tile @click="dialog = true">
         <v-list-tile-action>
           <v-icon>delete</v-icon>
@@ -60,6 +67,9 @@ export default {
         id: this.card.id,
         status: statusId
       })
+    },
+    moveToBacklog: function () {
+      this.$store.commit('moveToBacklog', this.card.id)
     }
   },
   components: {

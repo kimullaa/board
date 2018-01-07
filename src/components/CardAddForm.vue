@@ -28,7 +28,8 @@ export default {
   name: 'CardAddForm',
   props: {
     value: Boolean,
-    statusId: Number
+    statusId: Number,
+    board: Boolean
   },
   data () {
     return {
@@ -46,11 +47,12 @@ export default {
         this.$store.commit('createCard', {
           title: this.title,
           details: this.details,
-          status: this.statusId
+          status: this.statusId,
+          board: this.board
         })
+        this.clear()
+        this.$emit('input', false)
       }
-      this.clear()
-      this.$emit('input', false)
     },
     clear: function () {
       this.$refs.form.reset()
