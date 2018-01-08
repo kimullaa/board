@@ -8,6 +8,7 @@ export default new Vuex.Store({
     cards: [
       {
         id: 0,
+        type: 0,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -16,6 +17,7 @@ export default new Vuex.Store({
       },
       {
         id: 1,
+        type: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -24,6 +26,7 @@ export default new Vuex.Store({
       },
       {
         id: 2,
+        type: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -40,6 +43,7 @@ export default new Vuex.Store({
       },
       {
         id: 4,
+        type: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -48,6 +52,7 @@ export default new Vuex.Store({
       },
       {
         id: 5,
+        type: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -56,6 +61,7 @@ export default new Vuex.Store({
       },
       {
         id: 6,
+        type: 1,
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -64,6 +70,7 @@ export default new Vuex.Store({
       },
       {
         id: 7,
+        type: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -72,6 +79,7 @@ export default new Vuex.Store({
       },
       {
         id: 8,
+        type: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -95,6 +103,16 @@ export default new Vuex.Store({
         name: 'DONE',
         color: 'grey darken-1'
       }
+    ],
+    types: [
+      {
+        id: 0,
+        name: 'Story'
+      },
+      {
+        id: 1,
+        name: 'Task'
+      }
     ]
   },
   getters: {
@@ -114,6 +132,9 @@ export default new Vuex.Store({
     },
     getLastLane: state => {
       return 2
+    },
+    getDefaultType: state => {
+      return 0
     }
   },
   mutations: {
@@ -139,7 +160,8 @@ export default new Vuex.Store({
         title: card.title,
         details: card.details,
         status: card.status,
-        board: card.board
+        board: card.board,
+        type: card.type
       })
     },
     updateCard (state, card) {

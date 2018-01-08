@@ -9,6 +9,16 @@
         :rules="titleRules"
         required
         ></v-text-field>
+        <v-select
+        :items="types"
+        item-text="name"
+        item-value="id"
+        label="Type"
+        :rules="typeRules"
+        v-model="type"
+        required
+        ></v-select>
+      </v-form>
         <v-text-field
         label="Details"
         v-model="details"
@@ -31,13 +41,25 @@ export default {
     statusId: Number,
     board: Boolean
   },
+  computed: {
+    types () {
+      return this.$store.state.types
+    },
+    defaultType () {
+      return this.$store.getters.getDefaultType
+    }
+  },
   data () {
     return {
       valid: false,
       title: '',
+      type: '',
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
+      ],
+      typeRules: [
+        (v) => v != null || 'Type is required'
       ]
     }
   },
@@ -48,7 +70,8 @@ export default {
           title: this.title,
           details: this.details,
           status: this.statusId,
-          board: this.board
+          board: this.board,
+          type: this.type
         })
         this.clear()
         this.$emit('input', false)

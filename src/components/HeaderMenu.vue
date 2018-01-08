@@ -9,7 +9,7 @@
           <v-icon>assignment</v-icon>
         </v-list-tile-action>
         <v-list-tile-title>
-          タスクボード
+          カンバンボード
         </v-list-tile-title>
       </v-list-tile>
       <v-divider></v-divider>
