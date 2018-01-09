@@ -8,7 +8,7 @@ export default new Vuex.Store({
     cards: [
       {
         id: 0,
-        type: 0,
+        tags: [0],
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -17,7 +17,7 @@ export default new Vuex.Store({
       },
       {
         id: 1,
-        type: 0,
+        tags: [],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       },
       {
         id: 2,
-        type: 0,
+        tags: [0, 1],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -35,6 +35,7 @@ export default new Vuex.Store({
       },
       {
         id: 3,
+        tags: [0, 1],
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -43,7 +44,7 @@ export default new Vuex.Store({
       },
       {
         id: 4,
-        type: 0,
+        tags: [0, 1],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -52,7 +53,7 @@ export default new Vuex.Store({
       },
       {
         id: 5,
-        type: 0,
+        tags: [0, 1],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -61,7 +62,7 @@ export default new Vuex.Store({
       },
       {
         id: 6,
-        type: 1,
+        tags: [0, 1],
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -70,7 +71,7 @@ export default new Vuex.Store({
       },
       {
         id: 7,
-        type: 1,
+        tags: [0, 1],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -79,7 +80,7 @@ export default new Vuex.Store({
       },
       {
         id: 8,
-        type: 1,
+        tags: [0, 1],
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -104,14 +105,18 @@ export default new Vuex.Store({
         color: 'grey darken-1'
       }
     ],
-    types: [
+    tags: [
       {
         id: 0,
-        name: 'Story'
+        name: '仕事',
+        color: 'blue',
+        icon: 'work'
       },
       {
         id: 1,
-        name: 'Task'
+        name: '家庭',
+        color: 'grey',
+        icon: 'home'
       }
     ]
   },
@@ -132,9 +137,6 @@ export default new Vuex.Store({
     },
     getLastLane: state => {
       return 2
-    },
-    getDefaultType: state => {
-      return 0
     }
   },
   mutations: {
@@ -161,12 +163,13 @@ export default new Vuex.Store({
         details: card.details,
         status: card.status,
         board: card.board,
-        type: card.type
+        tags: card.tags
       })
     },
     updateCard (state, card) {
       state.cards.find(item => item.id === Number(card.id)).title = card.title
       state.cards.find(item => item.id === Number(card.id)).details = card.details
+      state.cards.find(item => item.id === Number(card.id)).tags = card.tags
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {

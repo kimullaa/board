@@ -10,15 +10,15 @@
         required
         ></v-text-field>
         <v-select
-        :items="types"
+        :items="currentTags"
         item-text="name"
         item-value="id"
-        label="Type"
-        :rules="typeRules"
-        v-model="type"
-        required
-        ></v-select>
-      </v-form>
+        label="Tags"
+        multiple
+        chips
+        v-model="tags"
+        >
+      </v-select>
         <v-text-field
         label="Details"
         v-model="details"
@@ -42,24 +42,18 @@ export default {
     board: Boolean
   },
   computed: {
-    types () {
-      return this.$store.state.types
-    },
-    defaultType () {
-      return this.$store.getters.getDefaultType
+    currentTags () {
+      return this.$store.state.tags
     }
   },
   data () {
     return {
       valid: false,
       title: '',
-      type: '',
+      tags: [],
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
-      ],
-      typeRules: [
-        (v) => v != null || 'Type is required'
       ]
     }
   },
@@ -71,7 +65,7 @@ export default {
           details: this.details,
           status: this.statusId,
           board: this.board,
-          type: this.type
+          tags: this.tags
         })
         this.clear()
         this.$emit('input', false)
