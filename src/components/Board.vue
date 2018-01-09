@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap>
     <template  v-for="status in statuses">
-      <v-flex xs4>
+      <v-flex xs4 :key="status.id">
         <lane :color="status.color" :title="status.name" :id="status.id" />
       </v-flex>
     </template>

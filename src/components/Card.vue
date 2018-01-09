@@ -6,21 +6,16 @@
         <v-toolbar card dense>
           <v-toolbar-title>{{card.title}}</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-icon right v-for="tag in tags">{{tag.icon}}</v-icon>
-          <card-edit-button :id="card.id"></card-edit-button>
+          <v-icon :key="tag.id" v-for="tag in tags">{{tag.icon}}</v-icon>
           <card-menu :card="card"></card-menu>
         </v-toolbar>
-      </div>
-      <v-divider></v-divider>
-      <v-card-text class="pre-like">{{card.details}}</v-card-text>
-    </v-card>
+      </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import CardMenu from './CardMenu.vue'
-import CardEditButton from './CardEditButton.vue'
 
 export default {
   name: 'Card',
@@ -42,8 +37,7 @@ export default {
     }
   },
   components: {
-    CardMenu,
-    CardEditButton
+    CardMenu
   }
 }
 </script>
