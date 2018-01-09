@@ -115,7 +115,7 @@ export default new Vuex.Store({
       {
         id: 1,
         name: '家庭',
-        color: 'grey',
+        color: 'green',
         icon: 'home'
       }
     ]
@@ -131,6 +131,9 @@ export default new Vuex.Store({
     },
     getCard: (state) => (id) => {
       return state.cards.find(card => card.id === id)
+    },
+    getTag: (state) => (id) => {
+      return state.tags.find(tag => tag.id === id)
     },
     getInitialLane: state => {
       return 0
@@ -170,6 +173,11 @@ export default new Vuex.Store({
       state.cards.find(item => item.id === Number(card.id)).title = card.title
       state.cards.find(item => item.id === Number(card.id)).details = card.details
       state.cards.find(item => item.id === Number(card.id)).tags = card.tags
+    },
+    updateTag (state, tag) {
+      state.tags.find(item => item.id === Number(tag.id)).name = tag.name
+      state.tags.find(item => item.id === Number(tag.id)).color = tag.color
+      state.tags.find(item => item.id === Number(tag.id)).icon = tag.icon
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {

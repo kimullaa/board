@@ -6,7 +6,7 @@
         <v-toolbar card dense>
           <v-toolbar-title>{{card.title}}</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-icon :key="tag.id" v-for="tag in tags">{{tag.icon}}</v-icon>
+          <v-icon :key="tag.id" v-for="tag in tags" :color="tag.color">{{tag.icon}}</v-icon>
           <card-menu :card="card"></card-menu>
         </v-toolbar>
       </v-card>
