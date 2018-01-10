@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" scrollable max-width="500px">
     <slot slot="activator">
     </slot>
-    <v-card class="text-xs-center">
+    <v-card>
       <v-card-title>アイコンを選ぶ</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
@@ -199,7 +199,6 @@ export default {
         'speaker_notes',
         'speaker_notes_off',
         'spellcheck',
-        'star_rate',
         'stars',
         'accessibility',
         'lock_open',
@@ -304,7 +303,7 @@ export default {
 
 <style scoped="scoped">
 span {
-  padding: 5px;
+  margin: 10px;
   display: inline-block;
 }
 </style>

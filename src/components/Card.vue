@@ -1,14 +1,15 @@
 <template>
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
-  <v-layout row :id="`card-${card.id}`">
+  <v-layout wrap row :id="`card-${card.id}`">
     <v-flex xs12>
       <v-card class="mb-2" color="grey lighten-3" hover>
-        <v-toolbar card dense>
-          <v-toolbar-title>{{card.title}}</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-icon :key="tag.id" v-for="tag in tags" :color="tag.color">{{tag.icon}}</v-icon>
-          <card-menu :card="card"></card-menu>
-        </v-toolbar>
+          <v-toolbar card dense @click="$router.push(`/board/cards/${card.id}`)">
+            <v-toolbar-title>{{card.title}}
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-icon :color="list.color">{{list.icon}}</v-icon>
+            <card-menu :card="card"></card-menu>
+          </v-toolbar>
       </v-card>
     </v-flex>
   </v-layout>
@@ -24,16 +25,13 @@ export default {
       id: Number,
       title: String,
       status: Number,
-      details: String
+      details: String,
+      list: Number
     }
   },
   computed: {
-    tags () {
-      return this.$store.state.tags.filter(tag => this.card.tags.includes(tag.id))
-    }
-  },
-  data () {
-    return {
+    list () {
+      return this.$store.getters.getList(this.card.list)
     }
   },
   components: {

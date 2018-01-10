@@ -10,13 +10,12 @@
         required
         ></v-text-field>
         <v-select
-        :items="currentTags"
+        :items="lists"
         item-text="name"
         item-value="id"
-        label="Tags"
-        multiple
+        label="List"
         chips
-        v-model="tags"
+        v-model="list"
         ></v-select>
         <v-text-field
         label="Details"
@@ -41,8 +40,8 @@ export default {
     value: Boolean
   },
   computed: {
-    currentTags () {
-      return this.$store.state.tags
+    lists () {
+      return this.$store.state.lists
     }
   },
   watch: {
@@ -50,14 +49,14 @@ export default {
       const card = this.$store.getters.getCard(this.id)
       this.title = card.title
       this.details = card.details
-      this.tags = card.tags
+      this.list = card.list
     }
   },
   data () {
     return {
       valid: false,
       title: '',
-      tags: [],
+      list: null,
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
@@ -71,7 +70,7 @@ export default {
           id: this.id,
           title: this.title,
           details: this.details,
-          tags: this.tags
+          list: this.list
         })
         this.clear()
         this.$emit('input', false)

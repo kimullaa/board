@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Board from '@/components/Board'
 import Config from '@/components/Config'
-import Tags from '@/components/Tags'
+import Lists from '@/components/Lists'
 import Backlog from '@/components/Backlog'
 
 Vue.use(Router)
@@ -10,9 +10,17 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/board',
       name: 'Board',
       component: Board
+    },
+    {
+      path: '/board/cards/:id',
+      name: 'Board',
+      component: Board,
+      props: (route) => ({
+        id: Number(route.params.id)
+      })
     },
     {
       path: '/config',
@@ -20,9 +28,9 @@ export default new Router({
       component: Config
     },
     {
-      path: '/tags',
-      name: 'Tags',
-      component: Tags
+      path: '/lists',
+      name: 'Lists',
+      component: Lists
     },
     {
       path: '/backlog',

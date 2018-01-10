@@ -32,8 +32,8 @@
           <card-delete :id="card.id" v-model="deleteDialog"></card-delete>
         </v-dialog>
       </v-list-tile>
-      <v-divider></v-divider>
       <template v-for="status in statuses">
+        <v-divider></v-divider>
         <v-list-tile @click="changeStatus(status.id)">
           <v-list-tile-action>
             <v-chip label :color="status.color" text-color="white">
