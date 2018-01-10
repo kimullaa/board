@@ -37,8 +37,8 @@ export default {
     }
   },
   watch: {
-    value: function () {
-      console.log(this.id , this.value)
+    id: function () {
+      console.log(this.id, this.value)
       const tag = this.$store.getters.getTag(this.id)
       this.name = tag.name
       this.color = tag.color

@@ -5,11 +5,11 @@
         <v-card>
           <v-card-title class="headline">タグ一覧</v-card-title>
           <v-card-text>
-            <v-chip :key="tag.id" v-for="tag in tags"  @click="dialog = true">
+            <v-chip :key="tag.id" v-for="tag in tags"  @click="dialog = true; selectedId=tag.id">
               {{tag.name}}
               <v-icon :color="tag.color" class="ml-3">{{tag.icon}}</v-icon>
               <v-dialog v-model="dialog" max-width="500px">
-                <tag-edit-form :id="tag.id" v-model="dialog"></tag-edit-form>
+                <tag-edit-form :id="selectedId" v-model="dialog"></tag-edit-form>
               </v-dialog>
             </v-chip>
           </v-card-text>
@@ -31,7 +31,8 @@ export default {
   },
   data () {
     return {
-      dialog: false
+      dialog: false,
+      selectedId: null
     }
   },
   components: {
