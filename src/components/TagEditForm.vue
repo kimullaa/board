@@ -2,10 +2,6 @@
   <v-card>
     <v-card-title>タグを編集する</v-card-title>
     <v-card-text>
-      <v-chip disabled>
-        {{name}}
-        <v-icon :color="color" class="ml-3">{{icon}}</v-icon>
-      </v-chip>
       <v-form v-model="valid" ref="form" lazy-validation>
         <v-text-field
         label="Name"
@@ -14,6 +10,10 @@
         required
         ></v-text-field>
       </v-form>
+      <label>Color</label>
+      <color-picker v-model="color">
+        <v-icon :color="color">{{icon}}</v-icon>
+      </color-picker>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import ColorPicker from './ColorPicker.vue'
 
 export default {
   name: 'TagEditForm',
@@ -37,6 +38,7 @@ export default {
   },
   watch: {
     value: function () {
+      console.log(this.id , this.value)
       const tag = this.$store.getters.getTag(this.id)
       this.name = tag.name
       this.color = tag.color
@@ -70,6 +72,9 @@ export default {
     clear: function () {
       this.$refs.form.reset()
     }
+  },
+  components: {
+    ColorPicker
   }
 }
 </script>

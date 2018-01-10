@@ -22,7 +22,9 @@
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs5 offset-xs1>
-                      <color-chip v-model="status.color" :text="status.name"></color-chip>
+                      <color-picker v-model="status.color">
+                        <v-chip label :color="status.color" text-color="white">{{status.name}}</v-chip>
+                      </color-picker>
                     </v-flex>
                   </v-layout>
                 </template>
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import ColorChip from './ColorChip.vue'
+import ColorPicker from './ColorPicker.vue'
 
 export default {
   name: 'ConfigLane',
@@ -71,7 +73,7 @@ export default {
     }
   },
   components: {
-    ColorChip
+    ColorPicker
   }
 }
 </script>

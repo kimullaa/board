@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import TagEditForm from './tagEditForm'
+import TagEditForm from './TagEditForm'
 
 export default {
   name: 'Tags',
