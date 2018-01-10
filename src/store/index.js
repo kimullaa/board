@@ -8,7 +8,7 @@ export default new Vuex.Store({
     cards: [
       {
         id: 0,
-        tags: [0],
+        list: 0,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -17,7 +17,7 @@ export default new Vuex.Store({
       },
       {
         id: 1,
-        tags: [],
+        list: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       },
       {
         id: 2,
-        tags: [0, 1],
+        list: 0,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -35,7 +35,7 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        tags: [0, 1],
+        list: 0,
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -44,7 +44,7 @@ export default new Vuex.Store({
       },
       {
         id: 4,
-        tags: [0, 1],
+        list: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -53,7 +53,7 @@ export default new Vuex.Store({
       },
       {
         id: 5,
-        tags: [0, 1],
+        list: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -62,7 +62,7 @@ export default new Vuex.Store({
       },
       {
         id: 6,
-        tags: [0, 1],
+        list: 1,
         status: 0,
         title: 'sample1',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -71,7 +71,7 @@ export default new Vuex.Store({
       },
       {
         id: 7,
-        tags: [0, 1],
+        list: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -80,7 +80,7 @@ export default new Vuex.Store({
       },
       {
         id: 8,
-        tags: [0, 1],
+        list: 1,
         status: 1,
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -105,7 +105,7 @@ export default new Vuex.Store({
         color: 'grey darken-1'
       }
     ],
-    tags: [
+    lists: [
       {
         id: 0,
         name: '仕事',
@@ -132,8 +132,8 @@ export default new Vuex.Store({
     getCard: (state) => (id) => {
       return state.cards.find(card => card.id === id)
     },
-    getTag: (state) => (id) => {
-      return state.tags.find(tag => tag.id === id)
+    getList: (state) => (id) => {
+      return state.lists.find(list => list.id === id)
     },
     getInitialLane: state => {
       return 0
@@ -166,18 +166,18 @@ export default new Vuex.Store({
         details: card.details,
         status: card.status,
         board: card.board,
-        tags: card.tags
+        list: card.list
       })
     },
     updateCard (state, card) {
       state.cards.find(item => item.id === Number(card.id)).title = card.title
       state.cards.find(item => item.id === Number(card.id)).details = card.details
-      state.cards.find(item => item.id === Number(card.id)).tags = card.tags
+      state.cards.find(item => item.id === Number(card.id)).list = card.list
     },
-    updateTag (state, tag) {
-      state.tags.find(item => item.id === Number(tag.id)).name = tag.name
-      state.tags.find(item => item.id === Number(tag.id)).color = tag.color
-      state.tags.find(item => item.id === Number(tag.id)).icon = tag.icon
+    updateList (state, list) {
+      state.cards.find(item => item.id === Number(list.id)).name = list.name
+      state.cards.find(item => item.id === Number(list.id)).color = list.color
+      state.cards.find(item => item.id === Number(list.id)).icon = list.icon
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {

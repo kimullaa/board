@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>タグを編集する</v-card-title>
+    <v-card-title>リストを編集する</v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation>
         <v-text-field
@@ -26,23 +26,22 @@
 import ColorPicker from './ColorPicker.vue'
 
 export default {
-  name: 'TagEditForm',
+  name: 'ListEditForm',
   props: {
     id: Number,
     value: Boolean
   },
   computed: {
-    currentTags () {
-      return this.$store.state.tags
+    lists () {
+      return this.$store.state.lists
     }
   },
   watch: {
     id: function () {
-      console.log(this.id, this.value)
-      const tag = this.$store.getters.getTag(this.id)
-      this.name = tag.name
-      this.color = tag.color
-      this.icon = tag.icon
+      const list = this.$store.getters.getList(this.id)
+      this.name = list.name
+      this.color = list.color
+      this.icon = list.icon
     }
   },
   data () {
@@ -59,7 +58,7 @@ export default {
   methods: {
     submit: function () {
       if (this.$refs.form.validate()) {
-        this.$store.commit('updateTag', {
+        this.$store.commit('updateList', {
           id: this.id,
           name: this.name,
           color: this.color,

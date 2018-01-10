@@ -5,11 +5,11 @@
         <v-card>
           <v-card-title class="headline">タグ一覧</v-card-title>
           <v-card-text>
-            <v-chip :key="tag.id" v-for="tag in tags"  @click="dialog = true; selectedId=tag.id">
-              {{tag.name}}
-              <v-icon :color="tag.color" class="ml-3">{{tag.icon}}</v-icon>
+            <v-chip :key="list.id" v-for="list in lists"  @click="dialog = true; selectedId=list.id">
+              {{list.name}}
+              <v-icon :color="list.color" class="ml-3">{{list.icon}}</v-icon>
               <v-dialog v-model="dialog" max-width="500px">
-                <tag-edit-form :id="selectedId" v-model="dialog"></tag-edit-form>
+                <list-edit-form :id="selectedId" v-model="dialog"></list-edit-form>
               </v-dialog>
             </v-chip>
           </v-card-text>
@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import TagEditForm from './TagEditForm'
+import ListEditForm from './ListEditForm'
 
 export default {
-  name: 'Tags',
+  name: 'Lists',
   computed: {
-    tags () {
-      return this.$store.state.tags
+    lists () {
+      return this.$store.state.lists
     }
   },
   data () {
@@ -36,7 +36,7 @@ export default {
     }
   },
   components: {
-    TagEditForm
+    ListEditForm
   }
 }
 </script>

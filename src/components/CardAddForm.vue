@@ -10,13 +10,12 @@
         required
         ></v-text-field>
         <v-select
-        :items="currentTags"
+        :items="lists"
         item-text="name"
         item-value="id"
-        label="Tags"
-        multiple
+        label="List"
         chips
-        v-model="tags"
+        v-model="list"
         >
       </v-select>
         <v-text-field
@@ -42,15 +41,15 @@ export default {
     board: Boolean
   },
   computed: {
-    currentTags () {
-      return this.$store.state.tags
+    lists () {
+      return this.$store.state.lists
     }
   },
   data () {
     return {
       valid: false,
       title: '',
-      tags: [],
+      list: null,
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
@@ -65,7 +64,7 @@ export default {
           details: this.details,
           status: this.statusId,
           board: this.board,
-          tags: this.tags
+          list: this.list
         })
         this.clear()
         this.$emit('input', false)

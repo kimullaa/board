@@ -6,7 +6,7 @@
         <v-toolbar card dense>
           <v-toolbar-title>{{card.title}}</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-icon :key="tag.id" v-for="tag in tags" :color="tag.color">{{tag.icon}}</v-icon>
+          <v-icon :color="list.color">{{list.icon}}</v-icon>
           <card-menu :card="card"></card-menu>
         </v-toolbar>
       </v-card>
@@ -24,12 +24,13 @@ export default {
       id: Number,
       title: String,
       status: Number,
-      details: String
+      details: String,
+      list: Number
     }
   },
   computed: {
-    tags () {
-      return this.$store.state.tags.filter(tag => this.card.tags.includes(tag.id))
+    list () {
+      return this.$store.getters.getList(this.card.list)
     }
   },
   data () {
