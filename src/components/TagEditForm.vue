@@ -14,6 +14,10 @@
       <color-picker v-model="color">
         <v-icon :color="color">{{icon}}</v-icon>
       </color-picker>
+      <label>Icon</label>
+      <icon-picker v-model="icon">
+        <v-icon>{{icon}}</v-icon>
+      </icon-picker>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -24,6 +28,7 @@
 
 <script>
 import ColorPicker from './ColorPicker.vue'
+import IconPicker from './IconPicker.vue'
 
 export default {
   name: 'TagEditForm',
@@ -74,7 +79,8 @@ export default {
     }
   },
   components: {
-    ColorPicker
+    ColorPicker,
+    IconPicker
   }
 }
 </script>
