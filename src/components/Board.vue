@@ -6,15 +6,18 @@
       </v-flex>
     </template>
     <card-delete-all-button></card-delete-all-button>
+    <card-details :id="id"></card-details>
   </v-layout>
 </template>
 
 <script>
 import Lane from './Lane.vue'
+import CardDetails from './CardDetails.vue'
 import CardDeleteAllButton from './CardDeleteAllButton.vue'
 
 export default {
   name: 'Board',
+  props: ['id'],
   computed: {
     statuses () {
       return this.$store.state.statuses
@@ -22,6 +25,7 @@ export default {
   },
   components: {
     Lane,
+    CardDetails,
     CardDeleteAllButton
   }
 }

@@ -10,9 +10,17 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/board',
       name: 'Board',
       component: Board
+    },
+    {
+      path: '/board/cards/:id',
+      name: 'Board',
+      component: Board,
+      props: (route) => ({
+        id: Number(route.params.id)
+      })
     },
     {
       path: '/config',
