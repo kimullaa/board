@@ -60,6 +60,8 @@ export default {
 
 <style scoped="scoped">
 .lane {
-  min-height: 100px
+  height:80vh;
+  overflow-y: scroll;
+  padding-bottom: 40vh;
 }
 </style>
