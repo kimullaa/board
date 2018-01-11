@@ -4,23 +4,29 @@ import Board from '@/components/Board'
 import Config from '@/components/Config'
 import Lists from '@/components/Lists'
 import Backlog from '@/components/Backlog'
+import CardDetails from '@/components/CardDetails'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/board',
-      name: 'Board',
-      component: Board
+      path: '/',
+      redirect: '/board'
     },
     {
-      path: '/board/cards/:id',
+      path: '/board',
       name: 'Board',
       component: Board,
-      props: (route) => ({
-        id: Number(route.params.id)
-      })
+      children: [
+        {
+          path: 'cards/:id',
+          component: CardDetails,
+          props: (route) => ({
+            id: Number(route.params.id)
+          })
+        }
+      ]
     },
     {
       path: '/config',

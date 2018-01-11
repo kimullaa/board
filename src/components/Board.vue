@@ -1,19 +1,19 @@
 <template>
-  <v-layout row wrap>
+  <v-layout row wrap @click="$router.push('/board')" class="board">
     <template  v-for="status in statuses">
       <v-flex xs4 :key="status.id">
         <lane :color="status.color" :title="status.name" :id="status.id" />
       </v-flex>
     </template>
     <card-delete-all-button></card-delete-all-button>
-    <card-details :id="id"></card-details>
+    <router-view></router-view>
   </v-layout>
 </template>
 
 <script>
 import Lane from './Lane.vue'
-import CardDetails from './CardDetails.vue'
 import CardDeleteAllButton from './CardDeleteAllButton.vue'
+import CardDetails from './CardDetails.vue'
 
 export default {
   name: 'Board',
@@ -25,8 +25,14 @@ export default {
   },
   components: {
     Lane,
-    CardDetails,
-    CardDeleteAllButton
+    CardDeleteAllButton,
+    CardDetails
   }
 }
 </script>
+
+<style scoped="scoped">
+.board {
+  height: 90vh;
+}
+</style>

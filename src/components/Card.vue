@@ -1,18 +1,14 @@
 <template>
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
-  <v-layout wrap row :id="`card-${card.id}`">
-    <v-flex xs12>
-      <v-card class="mb-2" color="grey lighten-3" hover>
-          <v-toolbar card dense @click="$router.push(`/board/cards/${card.id}`)">
-            <v-toolbar-title>{{card.title}}
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-icon :color="list.color">{{list.icon}}</v-icon>
-            <card-menu :card="card"></card-menu>
-          </v-toolbar>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-card class="mb-2" color="grey lighten-3" hover :id="`card-${card.id}`">
+    <v-toolbar card dense @click.stop="$router.push(`/board/cards/${card.id}`)">
+      <v-toolbar-title>{{card.title}}
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-icon :color="list.color">{{list.icon}}</v-icon>
+      <card-menu :card="card"></card-menu>
+    </v-toolbar>
+  </v-card>
 </template>
 
 <script>

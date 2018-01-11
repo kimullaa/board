@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn small dark fab bottom right color="pink" @click="dialog = true">
+    <v-btn small dark fab bottom right color="pink" @click.stop="dialog = true">
       <v-icon>add</v-icon>
     </v-btn>
     <v-dialog v-model="dialog" max-width="500px">

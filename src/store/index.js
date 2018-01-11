@@ -20,7 +20,7 @@ export default new Vuex.Store({
         list: 0,
         status: 1,
         title: 'sample2',
-        details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
+        details: ' yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
       },
@@ -29,7 +29,7 @@ export default new Vuex.Store({
         list: 0,
         status: 1,
         title: 'sample2',
-        details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
+        details: 'xxxx xxxx\nyy yyyyyyyy',
         priority: 0,
         board: true
       },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
         list: 0,
         status: 0,
         title: 'sample1',
-        details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
+        details: 'xxxx \nzzzzzzzzzzzz',
         priority: 0,
         board: true
       },

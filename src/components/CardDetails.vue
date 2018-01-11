@@ -1,15 +1,12 @@
 <template>
-  <v-bottom-sheet v-model="sheet">
-    <v-btn slot="activator" color="purple" dark>Click me</v-btn>
-    <v-card tile>
-      <v-text-field
-      Label="Memo"
-      v-model="card.details"
-      disabled
-      textarea
-      ></v-text-field>
-    </v-card>
-  </v-bottom-sheet>
+  <v-card tile class="bottom" @click.stop="">
+    <v-text-field
+    label="Memo"
+    v-model="card.details"
+    disabled
+    textarea
+    ></v-text-field>
+  </v-card>
 </template>
 
 <script>
@@ -18,26 +15,25 @@ export default {
   props: {
     id: Number
   },
-  watch: {
-    // FIXME: idだけをwatchしてるといっかいとじたあとに開けない
-    sheet: function () {
-      this.card = this.$store.getters.getCard(this.id)
-      if (this.id) {
-        this.sheet = true
-      }
+  computed: {
+    card () {
+      return this.$store.getters.getCard(this.id)
     }
   },
   data () {
     return {
-      sheet: false,
-      card: {
-        details: ''
-      }
+      sheet: false
     }
   }
 }
 </script>
 
 <style scoped="scoped">
+.bottom {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
 
 </style>
