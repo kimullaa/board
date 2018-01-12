@@ -1,5 +1,5 @@
 <template>
-  <v-layout row wrap @click="$router.push('/board')" class="board">
+  <v-layout row wrap @click="changeRoute" class="board">
     <v-flex xs12>
       <lists-tab :id="activeListId"></lists-tab>
     </v-flex>
@@ -9,7 +9,7 @@
       </v-flex>
     </template>
     <card-delete-all-button></card-delete-all-button>
-    <card-details :id="activeCardId"></card-details>
+    <card-details :id="activeCardId" v-if="activeCardId"></card-details>
   </v-layout>
 </template>
 
@@ -21,7 +21,7 @@ import ListsTab from './ListsTab.vue'
 
 export default {
   name: 'Board',
-  props: ['id', 'activeListId', 'activeCardId'],
+  props: ['activeListId', 'activeCardId'],
   computed: {
     statuses () {
       return this.$store.state.statuses
@@ -32,6 +32,16 @@ export default {
     CardDeleteAllButton,
     CardDetails,
     ListsTab
+  },
+  methods: {
+    changeRoute: function () {
+      const self = this
+      if (isNaN(this.activeListId)) {
+        self.$router.push('/board')
+      } else {
+        self.$router.push(`/board?list=${self.activeListId}`)
+      }
+    }
   }
 }
 </script>

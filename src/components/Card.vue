@@ -1,7 +1,7 @@
 <template>
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
   <v-card class="mb-2" color="grey lighten-3" hover :id="`card-${card.id}`">
-    <v-toolbar card dense @click.stop="$router.push(`/board/cards/${card.id}`)">
+    <v-toolbar card dense @click.stop="$router.push(`${$route.path}?card=${card.id}`)">
       <v-toolbar-title>{{card.title}}
       </v-toolbar-title>
       <v-spacer></v-spacer>
