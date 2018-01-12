@@ -62,6 +62,6 @@ export default {
 .lane {
   height:80vh;
   overflow-y: scroll;
-  padding-bottom: 40vh;
+  padding-bottom: 30vh;
 }
 </style>

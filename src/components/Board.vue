@@ -1,12 +1,15 @@
 <template>
   <v-layout row wrap @click="$router.push('/board')" class="board">
+    <v-flex xs12>
+      <lists-tab :id="activeListId"></lists-tab>
+    </v-flex>
     <template  v-for="status in statuses">
       <v-flex xs4 :key="status.id">
         <lane :color="status.color" :title="status.name" :id="status.id" />
       </v-flex>
     </template>
     <card-delete-all-button></card-delete-all-button>
-    <router-view></router-view>
+    <card-details :id="activeCardId"></card-details>
   </v-layout>
 </template>
 
@@ -14,10 +17,11 @@
 import Lane from './Lane.vue'
 import CardDeleteAllButton from './CardDeleteAllButton.vue'
 import CardDetails from './CardDetails.vue'
+import ListsTab from './ListsTab.vue'
 
 export default {
   name: 'Board',
-  props: ['id'],
+  props: ['id', 'activeListId', 'activeCardId'],
   computed: {
     statuses () {
       return this.$store.state.statuses
@@ -26,7 +30,8 @@ export default {
   components: {
     Lane,
     CardDeleteAllButton,
-    CardDetails
+    CardDetails,
+    ListsTab
   }
 }
 </script>
