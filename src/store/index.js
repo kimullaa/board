@@ -394,9 +394,9 @@ export default new Vuex.Store({
       state.cards.find(item => item.id === Number(card.id)).list = card.list
     },
     updateList (state, list) {
-      state.cards.find(item => item.id === Number(list.id)).name = list.name
-      state.cards.find(item => item.id === Number(list.id)).color = list.color
-      state.cards.find(item => item.id === Number(list.id)).icon = list.icon
+      state.lists.find(item => item.id === Number(list.id)).name = list.name
+      state.lists.find(item => item.id === Number(list.id)).color = list.color
+      state.lists.find(item => item.id === Number(list.id)).icon = list.icon
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {
