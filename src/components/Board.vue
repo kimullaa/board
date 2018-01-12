@@ -1,9 +1,7 @@
 <template>
-  <v-layout row wrap @click="changeRoute" class="board">
-    <v-flex xs2>
+  <v-layout row wrap @click="changeRoute">
       <lists :id="activeListId"></lists>
-    </v-flex>
-    <v-flex xs10>
+    <v-flex xs12>
       <v-layout row wrap>
         <template  v-for="status in statuses">
           <v-flex xs4 :key="status.id">
@@ -52,7 +50,4 @@ export default {
 </script>
 
 <style scoped="scoped">
-.board {
-  height: 90vh;
-}
 </style>

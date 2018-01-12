@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Board from '@/components/Board'
 import Config from '@/components/Config'
-import Lists from '@/components/Lists'
 import Backlog from '@/components/Backlog'
 
 Vue.use(Router)
@@ -26,11 +25,6 @@ export default new Router({
       path: '/config',
       name: 'Config',
       component: Config
-    },
-    {
-      path: '/lists',
-      name: 'Lists',
-      component: Lists
     },
     {
       path: '/backlog',

@@ -13,15 +13,6 @@
         </v-list-tile-title>
       </v-list-tile>
       <v-divider></v-divider>
-      <v-list-tile @click="$router.push('/lists'); dialog = true">
-        <v-list-tile-action>
-          <v-icon>label_outline</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-title>
-          リストの管理
-        </v-list-tile-title>
-      </v-list-tile>
-      <v-divider></v-divider>
       <v-list-tile @click="$router.push('/backlog'); dialog = true">
         <v-list-tile-action>
           <v-icon>list</v-icon>

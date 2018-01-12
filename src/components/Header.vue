@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dense light fixed app>
+  <v-toolbar dense dark color="grey darken-2" fixed clipped-left app>
     <header-menu></header-menu>
     <v-toolbar-title class="headline" @click="$router.push('/board')">Kanban Board</v-toolbar-title>
   </v-toolbar>
