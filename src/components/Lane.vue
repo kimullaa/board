@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <div class="ml-2">
     <v-toolbar :color="color" flat dense class="mb-3">
       <v-badge color="blue">
         <span slot="badge">{{numberofCards}}</span>
@@ -11,12 +11,12 @@
       <card-add-button :statusId="id" :board="true"></card-add-button>
     </v-toolbar>
     <!-- HACK: Vue.draggableで移動元のstatusを渡すためにstatusのidを埋め込む -->
-    <draggable :list="cards" :options="{group:'card'}" @update="changePriority" @add="fromOtherLane" class="lane">
+    <draggable :list="cards" :options="{group:'card'}" @update="changePriority" @add="fromOtherLane" class="cards">
       <template v-for="card in cards">
         <card :key="card.id" :card="card" />
       </template>
     </draggable>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style scoped="scoped">
-.lane {
+.cards {
   height:80vh;
   overflow-y: scroll;
   padding-bottom: 30vh;
