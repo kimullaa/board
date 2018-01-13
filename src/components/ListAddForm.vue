@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>リストを追加する</v-card-title>
     <v-card-text>
-      <v-form v-model="valid" ref="form" lazy-validation>
+      <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <v-text-field
         label="Name"
         v-model="name"
@@ -14,6 +14,8 @@
           name="color"
           label="Color"
           v-model="color"
+          :rules="colorRules"
+          required
           ></v-text-field>
         </color-picker>
         <icon-picker v-model="icon">
@@ -21,15 +23,14 @@
           name="icon"
           label="Icon"
           v-model="icon"
+          :rules="iconRules"
+          required
           ></v-text-field>
         </icon-picker>
+        <v-icon :color="color">{{icon}}</v-icon>
+        <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
-      <v-icon :color="color">{{icon}}</v-icon>
     </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="submit" color="primary">Save</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -52,6 +53,12 @@ export default {
       icon: '',
       nameRules: [
         (v) => !!v || 'Name is required'
+      ],
+      colorRules: [
+        (v) => !!v || 'Color is required'
+      ],
+      iconRules: [
+        (v) => !!v || 'Icon is required'
       ]
     }
   },

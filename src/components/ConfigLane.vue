@@ -10,30 +10,27 @@
             レーン名/色の編集
           </v-card-title>
           <v-card-text v-show="show">
-              <v-form v-model="valid" ref="form" lazy-validation>
-                <template v-for="(status,index) in statuses">
-                  <v-layout row wrap>
-                    <v-flex xs6>
-                      <v-text-field
-                      :label="`第${index + 1}レーン`"
-                      v-model="status.name"
-                      :rules="laneRules"
-                      required
-                      ></v-text-field>
-                    </v-flex>
-                    <v-flex xs5 offset-xs1>
-                      <color-picker v-model="status.color">
-                        <v-chip label :color="status.color" text-color="white">{{status.name}}</v-chip>
-                      </color-picker>
-                    </v-flex>
-                  </v-layout>
-                </template>
-              </v-form>
-            </v-card-text>
-          <v-card-actions v-show="show">
-            <v-spacer></v-spacer>
-            <v-btn @click="submit">save</v-btn>
-          </v-card-actions>
+            <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
+              <template v-for="(status,index) in statuses">
+                <v-layout row wrap>
+                  <v-flex xs6>
+                    <v-text-field
+                    :label="`第${index + 1}レーン`"
+                    v-model="status.name"
+                    :rules="laneRules"
+                    required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs5 offset-xs1>
+                    <color-picker v-model="status.color">
+                      <v-chip label :color="status.color" text-color="white">{{status.name}}</v-chip>
+                    </color-picker>
+                  </v-flex>
+                </v-layout>
+              </template>
+              <v-btn type="submit" color="primary">save</v-btn>
+            </v-form>
+          </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>

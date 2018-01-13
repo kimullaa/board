@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>タスクを編集する</v-card-title>
     <v-card-text>
-      <v-form v-model="valid" ref="form" lazy-validation>
+      <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <v-text-field
         label="Title"
         v-model="title"
@@ -14,20 +14,18 @@
         item-text="name"
         item-value="id"
         label="List"
-        chips
+        :rules="listRules"
         v-model="list"
+        required
         ></v-select>
         <v-text-field
         label="Details"
         v-model="details"
         textarea
         ></v-text-field>
+        <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
     </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="submit" color="primary">Save</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -60,6 +58,9 @@ export default {
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
+      ],
+      listRules: [
+        (v) => v !== null || 'List is required'
       ]
     }
   },

@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>タスクを追加する</v-card-title>
     <v-card-text>
-      <v-form v-model="valid" ref="form" lazy-validation>
+      <v-form v-model="valid" ref="form" lazy-validation @submit="submit">
         <v-text-field
         label="Title"
         v-model="title"
@@ -14,8 +14,9 @@
         :items="lists"
         item-text="name"
         item-value="id"
+        :rules="listRules"
         label="List"
-        chips
+        required
         v-model="list"
         >
       </v-select>
@@ -24,12 +25,9 @@
         v-model="details"
         textarea
         ></v-text-field>
+      <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
     </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="submit" color="primary">Save</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -39,7 +37,17 @@ export default {
   props: {
     value: Boolean,
     statusId: Number,
+    defaultList: Number,
     board: Boolean
+  },
+  watch: {
+    value: function () {
+      if (isNaN(this.defaultList)) {
+        this.list = null
+      } else {
+        this.list = this.defaultList
+      }
+    }
   },
   computed: {
     lists () {
@@ -54,6 +62,9 @@ export default {
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
+      ],
+      listRules: [
+        (v) => v !== null || 'List is required'
       ]
     }
   },
