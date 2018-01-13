@@ -1,8 +1,10 @@
 <template>
-  <v-card tile>
+  <v-card class="mb-2" color="grey lighten-3" hover>
     <v-toolbar card dense>
       <card-edit-button :id="item.id"></card-edit-button>
-      <v-toolbar-title class="grey--text text--darken-3">{{item.title}}</v-toolbar-title>
+      <v-toolbar-title>
+        {{item.title}}
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-icon :color="list.color">{{list.icon}}</v-icon>
       <v-btn @click="moveToBoard">

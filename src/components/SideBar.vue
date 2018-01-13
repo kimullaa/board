@@ -2,6 +2,8 @@
   <v-navigation-drawer fixed clipped v-model="value" app>
     <v-list>
       <v-divider></v-divider>
+
+      <!-- カンバンボード -->
       <v-list-group>
         <v-list-tile @click="$router.push('/board')" slot="item">
           <v-list-tile-action>
@@ -52,17 +54,23 @@
         </v-list-tile>
       </v-list-group>
       <v-divider></v-divider>
-      <v-list-tile @click="$router.push('/backlog')" >
-        <v-list-tile-action>
-          <v-icon>list</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>
-            バックログ
-          </v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+      <!-- end カンバンボード -->
+
+      <v-list-group>
+        <v-list-tile @click="$router.push('/backlog')" slot="item">
+          <v-list-tile-action>
+            <v-icon>list</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              バックログ
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list-group>
+
       <v-divider></v-divider>
+
       <v-list-group>
         <v-list-tile @click="$router.push('/config')" slot="item">
           <v-list-tile-action>
@@ -75,6 +83,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list-group>
+
       <v-divider></v-divider>
     </v-list>
 

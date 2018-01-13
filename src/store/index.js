@@ -31,7 +31,7 @@ export default new Vuex.Store({
         title: 'sample2',
         details: 'xxxx xxxx\nyy yyyyyyyy',
         priority: 0,
-        board: true
+        board: false
       },
       {
         id: 3,
@@ -40,7 +40,7 @@ export default new Vuex.Store({
         title: 'sample1',
         details: 'xxxx \nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
       {
         id: 4,
@@ -174,7 +174,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -184,7 +184,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -194,7 +194,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -204,7 +204,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -214,7 +214,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -224,7 +224,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -234,7 +234,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
@@ -244,7 +244,7 @@ export default new Vuex.Store({
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
-        board: true
+        board: false
       },
 
       {
