@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap @click="changeRoute">
-      <lists :id="activeListId"></lists>
+    <lists :active="activeListId"></lists>
     <v-flex xs12>
       <v-layout row wrap>
         <template  v-for="status in statuses">
