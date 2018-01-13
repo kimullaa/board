@@ -340,9 +340,15 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-    getActiveCardByStatus: (state) => (id) => {
+    getActiveCardByStatus: (state) => (statusId) => {
       return state.cards
-      .filter(card => card.status === id)
+      .filter(card => card.status === statusId)
+      .filter(card => card.board)
+    },
+    getActiveCardByStatusAndList: (state) => (statusId, listId) => {
+      return state.cards
+      .filter(card => card.status === statusId)
+      .filter(card => card.list === listId)
       .filter(card => card.board)
     },
     getBacklog: state => {

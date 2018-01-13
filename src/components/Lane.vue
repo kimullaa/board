@@ -29,11 +29,16 @@ export default {
   props: {
     color: String,
     title: String,
-    id: Number
+    id: Number,
+    listId: Number
   },
   computed: {
     cards () {
-      return this.$store.getters.getActiveCardByStatus(this.id)
+      if (isNaN(this.listId)) {
+        return this.$store.getters.getActiveCardByStatus(this.id)
+      } else {
+        return this.$store.getters.getActiveCardByStatusAndList(this.id, this.listId)
+      }
     },
     numberofCards () {
       return this.cards.length

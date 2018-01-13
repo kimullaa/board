@@ -5,7 +5,7 @@
       <v-layout row wrap>
         <template  v-for="status in statuses">
           <v-flex xs4 :key="status.id">
-            <lane :color="status.color" :title="status.name" :id="status.id" />
+            <lane :color="status.color" :title="status.name" :id="status.id" :listId="activeListId" />
           </v-flex>
         </template>
         <card-delete-all-button></card-delete-all-button>
