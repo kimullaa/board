@@ -1,7 +1,6 @@
 <template>
   <v-layout row wrap @click="changeRoute">
     <lists :active="activeListId"></lists>
-    <v-flex xs12>
       <v-layout row wrap>
         <template  v-for="status in statuses">
           <v-flex xs4 :key="status.id">
@@ -9,7 +8,6 @@
           </v-flex>
         </template>
       </v-layout>
-    </v-flex>
   </v-flex>
   <card-delete-all-button></card-delete-all-button>
   <card-details :id="activeCardId" v-if="activeCardId"></card-details>

@@ -65,8 +65,7 @@ export default {
 
 <style scoped="scoped">
 .cards {
-  height:80vh;
+  height:75vh;
   overflow-y: scroll;
-  padding-bottom: 30vh;
 }
 </style>
