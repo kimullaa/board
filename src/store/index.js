@@ -399,6 +399,14 @@ export default new Vuex.Store({
       state.cards.find(item => item.id === Number(card.id)).details = card.details
       state.cards.find(item => item.id === Number(card.id)).list = card.list
     },
+    createList (state, list) {
+      state.lists.push({
+        id: Math.floor(Math.random() * 10000), // 適当にidふる
+        name: list.name,
+        color: list.color,
+        icon: list.icon
+      })
+    },
     updateList (state, list) {
       state.lists.find(item => item.id === Number(list.id)).name = list.name
       state.lists.find(item => item.id === Number(list.id)).color = list.color

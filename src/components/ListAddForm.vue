@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>リストを編集する</v-card-title>
+    <v-card-title>リストを追加する</v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation>
         <v-text-field
@@ -38,22 +38,10 @@ import ColorPicker from './ColorPicker.vue'
 import IconPicker from './IconPicker.vue'
 
 export default {
-  name: 'ListEditForm',
-  props: {
-    id: Number,
-    value: Boolean
-  },
+  name: 'ListAddForm',
   computed: {
     lists () {
       return this.$store.state.lists
-    }
-  },
-  watch: {
-    id: function () {
-      const list = this.$store.getters.getList(this.id)
-      this.name = list.name
-      this.color = list.color
-      this.icon = list.icon
     }
   },
   data () {
@@ -70,7 +58,7 @@ export default {
   methods: {
     submit: function () {
       if (this.$refs.form.validate()) {
-        this.$store.commit('updateList', {
+        this.$store.commit('createList', {
           id: this.id,
           name: this.name,
           color: this.color,

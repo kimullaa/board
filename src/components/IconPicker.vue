@@ -1,5 +1,6 @@
 <template>
   <v-dialog v-model="dialog" scrollable max-width="500px">
+    <!-- FIXME: focus event を拾ってdialogを変える -->
     <slot slot="activator">
     </slot>
     <v-card>
