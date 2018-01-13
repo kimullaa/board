@@ -8,11 +8,11 @@
             <lane :color="status.color" :title="status.name" :id="status.id" :listId="activeListId" />
           </v-flex>
         </template>
-        <card-delete-all-button></card-delete-all-button>
-        <card-details :id="activeCardId" v-if="activeCardId"></card-details>
       </v-layout>
     </v-flex>
   </v-flex>
+  <card-delete-all-button></card-delete-all-button>
+  <card-details :id="activeCardId" v-if="activeCardId"></card-details>
 </v-layout>
 </template>
 

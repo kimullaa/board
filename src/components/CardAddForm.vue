@@ -8,6 +8,7 @@
         v-model="title"
         :rules="titleRules"
         required
+        autofocus
         ></v-text-field>
         <v-select
         :items="lists"
