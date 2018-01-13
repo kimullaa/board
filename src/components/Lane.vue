@@ -65,6 +65,7 @@ export default {
 
 <style scoped="scoped">
 .cards {
+  /* FIXME: 鷹さ指定が固定幅 */
   height:75vh;
   overflow-y: scroll;
 }

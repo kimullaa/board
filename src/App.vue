@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <my-header></my-header>
+    <my-header v-model="drawer"></my-header>
+    <my-side-bar v-model="drawer" :active="Number($route.query.list)"></my-side-bar>
     <v-content>
       <v-container fluid>
         <router-view/>
@@ -11,11 +12,18 @@
 
 <script>
 import MyHeader from './components/Header.vue'
+import MySideBar from './components/SideBar.vue'
 
 export default {
   name: 'App',
   components: {
-    MyHeader
+    MyHeader,
+    MySideBar
+  },
+  data () {
+    return {
+      drawer: true
+    }
   }
 }
 </script>

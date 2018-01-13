@@ -3,21 +3,14 @@
     <v-card-title>リストを編集する</v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
+        <v-icon :color="color">{{icon}}</v-icon>
         <v-text-field
         label="Name"
         v-model="name"
         :rules="nameRules"
         required
         ></v-text-field>
-        <color-picker v-model="color">
-          <v-text-field
-          name="color"
-          label="Color"
-          v-model="color"
-          :rules="colorRules"
-          required
-          ></v-text-field>
-        </color-picker>
+        <div>
         <icon-picker v-model="icon">
           <v-text-field
           name="icon"
@@ -27,7 +20,18 @@
           required
           ></v-text-field>
         </icon-picker>
-        <v-icon :color="color">{{icon}}</v-icon>
+      </div>
+      <div>
+        <color-picker v-model="color">
+          <v-text-field
+          name="color"
+          label="Color"
+          v-model="color"
+          :rules="colorRules"
+          required
+          ></v-text-field>
+        </color-picker>
+      </div>
         <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
     </v-card-text>

@@ -1,23 +1,21 @@
 <template>
-  <v-container>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-toolbar  color="grey darken-2" flat dense class="mb-1">
-          <v-toolbar-title class="white--text">
-            バックログ
-          </v-toolbar-title>
-          <v-spacer></v-spacer>
-          <card-add-button :statusId="0" :board="false"></card-add-button>
+  <v-layout row wrap>
+    <v-flex xs12>
+      <v-toolbar  color="grey darken-2" flat dense class="mb-1">
+        <v-toolbar-title class="white--text">
+          バックログ
         </v-toolbar-title>
-      </v-toolbar>
-      <draggable :list="backlogs">
-        <template v-for="backlog in backlogs">
-          <backlog-item :key="backlog.id" :item="backlog" />
-        </template>
-      </draggable>
-    </v-flex>
-  </v-layout>
-</v-container>
+        <v-spacer></v-spacer>
+        <card-add-button :statusId="0" :board="false"></card-add-button>
+      </v-toolbar-title>
+    </v-toolbar>
+    <draggable :list="backlogs">
+      <template v-for="backlog in backlogs">
+        <backlog-item :key="backlog.id" :item="backlog" />
+      </template>
+    </draggable>
+  </v-flex>
+</v-layout>
 </template>
 
 <script>

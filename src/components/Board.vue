@@ -1,6 +1,5 @@
 <template>
   <v-layout row wrap @click="changeRoute">
-    <lists :active="activeListId"></lists>
       <v-layout row wrap>
         <template  v-for="status in statuses">
           <v-flex xs4 :key="status.id">
@@ -18,7 +17,6 @@
 import Lane from './Lane.vue'
 import CardDeleteAllButton from './CardDeleteAllButton.vue'
 import CardDetails from './CardDetails.vue'
-import Lists from './Lists.vue'
 
 export default {
   name: 'Board',
@@ -31,8 +29,7 @@ export default {
   components: {
     Lane,
     CardDeleteAllButton,
-    CardDetails,
-    Lists
+    CardDetails
   },
   methods: {
     changeRoute: function () {

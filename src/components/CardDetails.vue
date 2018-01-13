@@ -1,18 +1,16 @@
 <template>
-  <v-footer app fixed>
-    <v-card tile style="width:100%">
-      <v-form class="pl-2 pr-2">
-        <v-text-field
-        @click.stop
-        label="Memo"
-        v-model="card.details"
-        readonly
-        textarea
-        rows=4
-        ></v-text-field>
-      </v-form>
-    </v-card>
-  </v-footer>
+  <v-card tile style="width:100%">
+    <v-form class="pl-2 pr-2">
+      <v-text-field
+      @click.stop
+      label="Memo"
+      v-model="card.details"
+      readonly
+      textarea
+      rows=4
+      ></v-text-field>
+    </v-form>
+  </v-card>
 </template>
 
 <script>
