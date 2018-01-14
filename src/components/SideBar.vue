@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer fixed clipped v-model="value" app>
+  <v-navigation-drawer fixed clipped v-model="drawer" app>
     <v-list>
       <v-divider></v-divider>
 
@@ -117,6 +117,14 @@ export default {
       return this.$store.state.lists
     }
   },
+  watch: {
+    value: function () {
+      this.drawer = this.value
+    },
+    drawer: function () {
+      this.$emit('input', this.drawer)
+    }
+  },
   props: {
     active: Number,
     value: Boolean
@@ -125,7 +133,8 @@ export default {
     return {
       editDialog: false,
       addDialog: false,
-      selectedId: null
+      selectedId: null,
+      drawer: null
     }
   },
   methods: {

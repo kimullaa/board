@@ -42,6 +42,7 @@ export default {
   },
   watch: {
     value: function () {
+      this.clear()
       if (isNaN(this.defaultList)) {
         this.list = null
       } else {

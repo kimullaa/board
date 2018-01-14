@@ -3,14 +3,15 @@
     <v-card-title>リストを追加する</v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
-        <v-icon :color="color">{{icon}}</v-icon>
-        <v-text-field
-        label="Name"
-        v-model="name"
-        :rules="nameRules"
-        required
-        ></v-text-field>
-        <div>
+        <v-flex d-flex>
+          <v-text-field
+          label="Name"
+          v-model="name"
+          :rules="nameRules"
+          required
+          ></v-text-field>
+        </v-flex>
+        <v-flex d-flex>
           <icon-picker v-model="icon">
             <v-text-field
             name="icon"
@@ -20,8 +21,8 @@
             required
             ></v-text-field>
           </icon-picker>
-        </div>
-        <div>
+        </v-flex>
+        <v-flex d-flex>
           <color-picker v-model="color">
             <v-text-field
             name="color"
@@ -31,7 +32,11 @@
             required
             ></v-text-field>
           </color-picker>
-        </div>
+        </v-flex>
+        <v-flex class="mb-3">
+          <label>Icon Preview</label>
+          <v-icon large class="ml-3" :color="color">{{icon}}</v-icon>
+        </v-flex>
         <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
     </v-card-text>
@@ -47,6 +52,14 @@ export default {
   computed: {
     lists () {
       return this.$store.state.lists
+    }
+  },
+  props: {
+    value: Boolean
+  },
+  watch: {
+    value: function () {
+      this.clear()
     }
   },
   data () {

@@ -3,35 +3,40 @@
     <v-card-title>リストを編集する</v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
-        <v-icon :color="color">{{icon}}</v-icon>
-        <v-text-field
-        label="Name"
-        v-model="name"
-        :rules="nameRules"
-        required
-        ></v-text-field>
-        <div>
-        <icon-picker v-model="icon">
+        <v-flex d-flex>
           <v-text-field
-          name="icon"
-          label="Icon"
-          v-model="icon"
-          :rules="iconRules"
+          label="Name"
+          v-model="name"
+          :rules="nameRules"
           required
           ></v-text-field>
-        </icon-picker>
-      </div>
-      <div>
-        <color-picker v-model="color">
-          <v-text-field
-          name="color"
-          label="Color"
-          v-model="color"
-          :rules="colorRules"
-          required
-          ></v-text-field>
-        </color-picker>
-      </div>
+        </v-flex>
+        <v-flex d-flex>
+          <icon-picker v-model="icon">
+            <v-text-field
+            name="icon"
+            label="Icon"
+            v-model="icon"
+            :rules="iconRules"
+            required
+            ></v-text-field>
+          </icon-picker>
+        </v-flex>
+        <v-flex d-flex>
+          <color-picker v-model="color">
+            <v-text-field
+            name="color"
+            label="Color"
+            v-model="color"
+            :rules="colorRules"
+            required
+            ></v-text-field>
+          </color-picker>
+        </v-flex>
+        <v-flex class="mb-3">
+          <label>Icon Preview</label>
+          <v-icon large class="ml-3" :color="color">{{icon}}</v-icon>
+        </v-flex>
         <v-btn type="submit" color="primary">Save</v-btn>
       </v-form>
     </v-card-text>
