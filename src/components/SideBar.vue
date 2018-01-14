@@ -72,7 +72,7 @@
       <v-divider></v-divider>
 
       <v-list-group>
-        <v-list-tile @click="$router.push('/config')" slot="item">
+        <v-list-tile slot="item">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
@@ -82,8 +82,17 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile @click="$router.push('/config/lane')">
+          <v-list-tile-action>
+            <v-icon>settings</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              レーン 名前/色
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list-group>
-
       <v-divider></v-divider>
     </v-list>
 
