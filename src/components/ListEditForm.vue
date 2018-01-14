@@ -54,7 +54,7 @@ export default {
     }
   },
   watch: {
-    id: function () {
+    value: function () {
       const list = this.$store.getters.getList(this.id)
       this.name = list.name
       this.color = list.color
