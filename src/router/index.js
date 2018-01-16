@@ -10,14 +10,26 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/board'
+      redirect: '/board/lists'
     },
     {
       path: '/board',
+      redirect: '/board/lists'
+    },
+    {
+      path: '/board/lists/:id',
       name: 'Board',
       component: Board,
       props: (route) => ({
-        activeListId: Number(route.query.list),
+        activeListId: Number(route.params.id),
+        activeCardId: Number(route.query.card)
+      })
+    },
+    {
+      path: '/board/lists',
+      name: 'Board',
+      component: Board,
+      props: (route) => ({
         activeCardId: Number(route.query.card)
       })
     },

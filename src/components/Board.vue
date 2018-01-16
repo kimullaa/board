@@ -37,7 +37,7 @@ export default {
       if (isNaN(this.activeListId)) {
         self.$router.push('/board')
       } else {
-        self.$router.push(`/board?list=${self.activeListId}`)
+        self.$router.push(`/board/lists/${self.activeListId}`)
       }
     }
   }
