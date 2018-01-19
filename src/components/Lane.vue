@@ -13,7 +13,7 @@
     <!-- HACK: Vue.draggableで移動元のstatusを渡すためにstatusのidを埋め込む -->
     <draggable :list="cards" :options="{group:'card'}" @update="changePriority" @add="fromOtherLane" class="cards">
       <template v-for="card in cards">
-        <card :key="card.id" :card="card" />
+        <card :key="card.id" :card="card" :isActive="card.id === activeCardId"/>
       </template>
     </draggable>
   </div>
@@ -30,7 +30,8 @@ export default {
     color: String,
     title: String,
     id: Number,
-    listId: Number
+    listId: Number,
+    activeCardId: Number
   },
   computed: {
     cards () {

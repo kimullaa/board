@@ -2,19 +2,23 @@
   <v-layout row wrap @click="changeRoute">
     <template  v-for="status in statuses">
       <v-flex xs4 :key="status.id">
-        <lane :color="status.color" :title="status.name" :id="status.id" :listId="activeListId" />
+        <lane
+        :id="status.id"
+        :color="status.color"
+        :title="status.name"
+        :listId="activeListId"
+        :activeCardId="activeCardId"
+        ></lane>
       </v-flex>
     </template>
   </v-flex>
   <card-delete-all-button></card-delete-all-button>
-  <card-details :id="activeCardId" v-if="activeCardId"></card-details>
 </v-layout>
 </template>
 
 <script>
 import Lane from './Lane.vue'
 import CardDeleteAllButton from './CardDeleteAllButton.vue'
-import CardDetails from './CardDetails.vue'
 
 export default {
   name: 'Board',
@@ -26,8 +30,7 @@ export default {
   },
   components: {
     Lane,
-    CardDeleteAllButton,
-    CardDetails
+    CardDeleteAllButton
   },
   methods: {
     changeRoute: function () {

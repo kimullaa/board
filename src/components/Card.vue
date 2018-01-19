@@ -1,7 +1,16 @@
 <template>
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
-  <v-card class="mb-2" color="grey lighten-3" hover :id="`card-${card.id}`">
-    <v-toolbar card dense @click.stop="$router.push(`${$route.path}?card=${card.id}`)">
+  <v-card
+  :class="[{ active: isActive }, 'mb-2']"
+  color="grey lighten-4"
+  hover
+  :id="`card-${card.id}`"
+  >
+    <v-toolbar
+    card
+    dense
+    @click.stop="$router.push(`${$route.path}?card=${card.id}`); show = !show"
+    >
       <v-toolbar-title>
         {{card.title}}
       </v-toolbar-title>
@@ -9,6 +18,10 @@
       <v-icon :color="list.color">{{list.icon}}</v-icon>
       <card-menu :card="card"></card-menu>
     </v-toolbar>
+    <v-card-text
+    v-show="show"
+    class="pre-like"
+    >{{card.details}}</v-card-text>
   </v-card>
 </template>
 
@@ -24,6 +37,12 @@ export default {
       status: Number,
       details: String,
       list: Number
+    },
+    isActive: false
+  },
+  data () {
+    return {
+      show: false
     }
   },
   computed: {
