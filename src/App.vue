@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <my-header v-model="drawer"></my-header>
-    <my-side-bar v-model="drawer" :active="Number($route.query.list)"></my-side-bar>
+    <my-side-bar v-model="drawer" :active="Number($route.params.list)"></my-side-bar>
     <v-content>
       <v-container fluid>
         <router-view/>

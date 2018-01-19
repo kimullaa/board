@@ -5,7 +5,7 @@
 
       <!-- カンバンボード -->
       <v-list-group>
-        <v-list-tile @click="$router.push('/board')" slot="item">
+        <v-list-tile :to="{path: '/board'}" slot="item">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -15,7 +15,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click.stop="$router.push('/board')" :class="{active: isActive()}">
+        <v-list-tile :exact="true" :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -27,7 +27,7 @@
         </v-list-tile>
         <v-divider></v-divider>
         <template v-for="list in lists">
-          <v-list-tile @click.stop="$router.push(`/board?list=${list.id}`)" :class="{active: isActive(list.id)}">
+          <v-list-tile :exact="true" :to="{path: `/board/lists/${list.id}`}">
             <v-list-tile-action>
               <v-icon :color="list.color">{{list.icon}}</v-icon>
             </v-list-tile-action>
@@ -57,7 +57,7 @@
       <!-- end カンバンボード -->
 
       <v-list-group>
-        <v-list-tile @click="$router.push('/backlog')" slot="item">
+        <v-list-tile :to="{path: '/backlog'}" slot="item">
           <v-list-tile-action>
             <v-icon>list</v-icon>
           </v-list-tile-action>
@@ -72,7 +72,7 @@
       <v-divider></v-divider>
 
       <v-list-group>
-        <v-list-tile slot="item">
+        <v-list-tile :to="{path: '/config'}" slot="item">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
