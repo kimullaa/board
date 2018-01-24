@@ -14,7 +14,7 @@
     </v-toolbar>
     <draggable :list="backlogs" class="backlogs">
       <template v-for="backlog in backlogs">
-        <backlog-item :key="backlog.id" :item="backlog" />
+        <backlog-item :key="backlog.id" :item="backlog" :isActive="activeBacklogItemId === backlog.id" />
       </template>
     </draggable>
   </v-flex>
@@ -28,6 +28,9 @@ import CardAddButton from './CardAddButton.vue'
 
 export default {
   name: 'Backlog',
+  props: {
+    activeBacklogItemId: Number
+  },
   computed: {
     backlogs () {
       return this.$store.getters.getBacklog

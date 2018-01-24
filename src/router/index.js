@@ -22,8 +22,8 @@ export default new Router({
       name: 'Board',
       component: Board,
       props: (route) => ({
-        activeListId: Number(route.params.id),
-        activeCardId: Number(route.query.card)
+        activeCardId: Number(route.query.active),
+        activeListId: Number(route.params.id)
       })
     },
     {
@@ -31,7 +31,7 @@ export default new Router({
       name: 'Board',
       component: Board,
       props: (route) => ({
-        activeCardId: Number(route.query.card)
+        activeCardId: Number(route.query.active)
       })
     },
     {
@@ -49,7 +49,10 @@ export default new Router({
     {
       path: '/backlog',
       name: 'Backlog',
-      component: Backlog
+      component: Backlog,
+      props: (route) => ({
+        activeBacklogItemId: Number(route.query.active)
+      })
     }
   ]
 })

@@ -1,6 +1,6 @@
 <template>
-  <v-card class="mb-2" color="grey lighten-3" hover>
-    <v-toolbar card dense>
+  <v-card class="mb-2" color="grey lighten-4" hover>
+    <v-toolbar card dense @click="changeRoute">
       <card-edit-button :id="item.id"></card-edit-button>
       <v-toolbar-title>
         {{item.title}}
@@ -12,8 +12,15 @@
         取り組む
       </v-btn>
     </v-toolbar>
-  </div>
-</v-card>
+    <v-card-text v-show="isActive">
+      <v-text-field
+      disabled
+      label="Details"
+      multi-line
+      v-model="item.details"
+      ></v-text-field>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -28,7 +35,8 @@ export default {
       status: Number,
       details: String,
       list: Number
-    }
+    },
+    isActive: Boolean
   },
   computed: {
     list () {
@@ -38,6 +46,13 @@ export default {
   methods: {
     moveToBoard: function () {
       this.$store.commit('moveToBoard', this.item.id)
+    },
+    changeRoute: function () {
+      if (this.isActive) {
+        this.$router.push(this.$route.path)
+      } else {
+        this.$router.push(`${this.$route.path}?active=${this.item.id}`)
+      }
     }
   },
   components: {
