@@ -20,7 +20,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :exact="true" :to="{path: '/board/lists'}">
+        <v-list-tile :exact="true" active-class="active" :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -32,7 +32,7 @@
         </v-list-tile>
         <v-divider></v-divider>
         <template v-for="list in lists">
-          <v-list-tile :exact="true" :to="{path: `/board/lists/${list.id}`}">
+          <v-list-tile :exact="true" active-class="active" :to="{path: `/board/lists/${list.id}`}" >
             <v-list-tile-action>
               <v-icon :color="list.color">{{list.icon}}</v-icon>
             </v-list-tile-action>
@@ -87,7 +87,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="$router.push('/config/lane')">
+        <v-list-tile :exact="true" active-class="active" :to="{path: '/config/lane'}">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
@@ -142,19 +142,6 @@ export default {
       drawer: null
     }
   },
-  methods: {
-    isActive (id) {
-      if (id !== undefined) {
-        return this.active === id
-      } else {
-        if (isNaN(this.active)) {
-          return true
-        } else {
-          return false
-        }
-      }
-    }
-  },
   components: {
     ListEditForm,
     ListAddForm
@@ -162,7 +149,7 @@ export default {
 }
 </script>
 
-<style scoped="scoped">
+<style >
 .active {
   background-color: #d9ecff;
 }
