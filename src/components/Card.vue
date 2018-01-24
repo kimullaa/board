@@ -15,7 +15,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-icon :color="list.color">{{list.icon}}</v-icon>
-      <card-menu :card="card"></card-menu>
+      <card-menu @click.native.stop :card="card"></card-menu>
     </v-toolbar>
     <v-card-text v-show="isActive">
       <v-text-field
