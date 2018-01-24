@@ -1,5 +1,10 @@
 <template>
-  <v-navigation-drawer fixed clipped v-model="drawer" app>
+  <v-navigation-drawer
+  fixed
+  clipped
+  disable-route-watcher
+  v-model="drawer"
+  app>
     <v-list>
       <v-divider></v-divider>
 
