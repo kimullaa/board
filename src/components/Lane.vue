@@ -54,6 +54,7 @@ export default {
         id: evt.item.id.split('card-')[1],
         status: this.id
       })
+      this.$router.push(this.$route.path)
     }
   },
   components: {

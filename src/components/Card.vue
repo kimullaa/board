@@ -1,15 +1,14 @@
 <template>
   <!-- HACK: Vue.draggableで移動元のidを渡すためにcardのidを埋め込む -->
   <v-card
-  :class="[{ active: isActive }, 'mb-2']"
-  color="grey lighten-4"
+  class="grey lighten-4 mb-2"
   hover
   :id="`card-${card.id}`"
   >
     <v-toolbar
     card
     dense
-    @click.stop="$router.push(`${$route.path}?card=${card.id}`); show = !show"
+    @click.stop="changeRoute"
     >
       <v-toolbar-title>
         {{card.title}}
@@ -18,10 +17,14 @@
       <v-icon :color="list.color">{{list.icon}}</v-icon>
       <card-menu :card="card"></card-menu>
     </v-toolbar>
-    <v-card-text
-    v-show="show"
-    class="pre-like"
-    >{{card.details}}</v-card-text>
+    <v-card-text v-show="isActive">
+      <v-text-field
+      disabled
+      label="Details"
+      multi-line
+      v-model="card.details"
+      ></v-text-field>
+    </v-card-text>
   </v-card>
 </template>
 
@@ -40,14 +43,18 @@ export default {
     },
     isActive: false
   },
-  data () {
-    return {
-      show: false
-    }
-  },
   computed: {
     list () {
       return this.$store.getters.getList(this.card.list)
+    }
+  },
+  methods: {
+    changeRoute: function () {
+      if (this.isActive) {
+        this.$router.push(this.$route.path)
+      } else {
+        this.$router.push(`${this.$route.path}?card=${this.card.id}`)
+      }
     }
   },
   components: {
@@ -57,7 +64,4 @@ export default {
 </script>
 
 <style scoped="scoped">
-.pre-like {
-  white-space: pre-wrap;
-}
 </style>
