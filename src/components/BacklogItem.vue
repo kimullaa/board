@@ -1,7 +1,7 @@
 <template>
   <v-card class="mb-2" color="grey lighten-4" hover>
     <v-toolbar card dense @click="changeRoute">
-      <card-edit-button :id="item.id"></card-edit-button>
+      <card-edit-button @click.native.stop :id="item.id"></card-edit-button>
       <v-toolbar-title>
         {{item.title}}
       </v-toolbar-title>
