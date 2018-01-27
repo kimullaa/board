@@ -53,7 +53,7 @@ export default {
       if (this.isActive) {
         this.$router.push(this.$route.path)
       } else {
-        this.$router.push(`${this.$route.path}?active=${this.card.id}`)
+        this.$router.push({query: {active: this.card.id}})
       }
     }
   },

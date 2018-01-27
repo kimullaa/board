@@ -20,7 +20,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :exact="true" active-class="active" :to="{path: '/board/lists'}">
+        <v-list-tile active-class="active" :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -32,7 +32,7 @@
         </v-list-tile>
         <v-divider></v-divider>
         <template v-for="list in lists">
-          <v-list-tile :exact="true" active-class="active" :to="{path: `/board/lists/${list.id}`}" >
+          <v-list-tile active-class="active" :to="{path: `/board/lists/${list.id}`}" >
             <v-list-tile-action>
               <v-icon :color="list.color">{{list.icon}}</v-icon>
             </v-list-tile-action>

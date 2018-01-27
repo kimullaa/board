@@ -1,5 +1,5 @@
 <template>
-  <v-layout row wrap @click="changeRoute">
+  <v-layout row wrap>
     <template  v-for="status in statuses">
       <v-flex xs4 :key="status.id">
         <lane
@@ -31,16 +31,6 @@ export default {
   components: {
     Lane,
     CardDeleteAllButton
-  },
-  methods: {
-    changeRoute: function () {
-      const self = this
-      if (isNaN(this.activeListId)) {
-        self.$router.push('/board')
-      } else {
-        self.$router.push(`/board/lists/${self.activeListId}`)
-      }
-    }
   }
 }
 </script>
