@@ -77,7 +77,7 @@
       <v-divider></v-divider>
 
       <v-list-group>
-        <v-list-tile :to="{path: '/config'}" slot="item">
+        <v-list-tile active-class="active" :to="{path: '/config'}" slot="item">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
