@@ -1,6 +1,14 @@
 <template>
   <div>
-    <v-btn dark fixed fab bottom right color="grey darken-3" @click.stop="dialog = true">
+    <v-btn
+    dark
+    fixed
+    fab
+    bottom
+    right
+    color="grey darken-3"
+    @click.stop="dialog = true"
+    >
       <v-icon>delete</v-icon>
     </v-btn>
     <v-dialog v-model="dialog" max-width="500px">

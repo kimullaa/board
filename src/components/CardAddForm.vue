@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>タスクを追加する</v-card-title>
     <v-card-text>
-      <v-form v-model="valid" ref="form" lazy-validation @submit="submit">
+      <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <v-text-field
         label="Title"
         v-model="title"

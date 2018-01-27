@@ -1,6 +1,14 @@
 <template>
-  <v-card class="mb-2" color="grey lighten-4" hover>
-    <v-toolbar card dense @click="changeRoute">
+  <v-card
+  class="mb-2"
+  color="grey lighten-4"
+  hover
+  >
+    <v-toolbar
+    card
+    dense
+    @click.stop="changeRoute"
+    >
       <card-edit-button @click.native.stop :id="item.id"></card-edit-button>
       <v-toolbar-title>
         {{item.title}}
@@ -12,7 +20,10 @@
         取り組む
       </v-btn>
     </v-toolbar>
-    <v-card-text v-show="isActive">
+    <v-card-text
+    v-show="isActive"
+    @click.stop="changeRoute"
+    >
       <v-text-field
       disabled
       label="Details"

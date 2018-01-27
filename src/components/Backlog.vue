@@ -18,13 +18,15 @@
       </template>
     </draggable>
   </v-flex>
+  <backlog-item-search></backlog-item-search>
 </v-layout>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import BacklogItem from './BacklogItem.vue'
-import CardAddButton from './CardAddButton.vue'
+import BacklogItem from './BacklogItem'
+import CardAddButton from './CardAddButton'
+import BacklogItemSearch from './BacklogItemSearch'
 
 export default {
   name: 'Backlog',
@@ -50,7 +52,8 @@ export default {
   components: {
     BacklogItem,
     draggable,
-    CardAddButton
+    CardAddButton,
+    BacklogItemSearch
   }
 }
 </script>
@@ -58,7 +61,7 @@ export default {
 <style scoped="scoped">
 .backlogs {
   /* FIXME: 鷹さ指定が固定幅 */
-  height:75vh;
+  height:70vh;
   overflow-y: scroll;
 }
 </style>
