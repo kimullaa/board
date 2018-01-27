@@ -1,7 +1,11 @@
 <template>
   <v-layout row wrap>
     <v-flex xs12>
-      <v-toolbar  color="grey darken-2" flat dense class="mb-3">
+      <v-toolbar
+      color="grey darken-2"
+      flat
+      dense
+      >
         <v-badge color="blue">
           <span slot="badge">{{numberofBacklogs}}</span>
           <v-toolbar-title class="white--text">
@@ -12,7 +16,20 @@
         <card-add-button :statusId="0" :board="false"></card-add-button>
       </v-toolbar-title>
     </v-toolbar>
-    <draggable :list="backlogs" class="backlogs">
+
+    <template v-if="queryString || list">
+      <span v-if="queryString">
+        絞り込み: 「{{queryString}}」
+      </span>
+      <span v-if="list">
+        リスト: 「<v-icon :color="list.color">{{list.icon}}</v-icon>」
+      </span>
+      <v-btn icon @click="$router.push('/backlog')">
+        <v-icon>clear</v-icon>
+      </v-btn>
+    </template>
+
+    <draggable :list="backlogs" class="backlogs mt-3">
       <template v-for="backlog in backlogs">
         <backlog-item :key="backlog.id" :item="backlog" :isActive="activeBacklogItemId === backlog.id" />
       </template>
@@ -31,11 +48,20 @@ import BacklogItemSearch from './BacklogItemSearch'
 export default {
   name: 'Backlog',
   props: {
-    activeBacklogItemId: Number
+    activeBacklogItemId: Number,
+    queryString: String,
+    queryListId: Number
   },
   computed: {
+    list () {
+      if (this.queryListId !== undefined) {
+        return this.$store.getters.getList(this.queryListId)
+      } else {
+        return undefined
+      }
+    },
     backlogs () {
-      return this.$store.getters.getBacklog
+      return this.$store.getters.getBacklog(this.queryString, this.queryListId)
     },
     statusId () {
       return this.$store.getters.getInitialLane

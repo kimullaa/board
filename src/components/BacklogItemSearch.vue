@@ -12,7 +12,7 @@
   </v-btn>
   <v-card>
     <v-card-text class="text-xs-center">
-      <v-form v-model="valid" ref="form" lazy-validation @submit="submit">
+      <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <v-layout row wrap>
           <v-flex xs-9>
             <v-text-field
@@ -72,7 +72,14 @@ export default {
   methods: {
     submit: function () {
       if (this.$refs.form.validate()) {
-        this.$router.push({query: {query: this.query, list: this.list}})
+        var criteria = {}
+        if (this.query) {
+          criteria.query = this.query
+        }
+        if (this.list !== null) {
+          criteria.list = this.list
+        }
+        this.$router.push({query: criteria})
         this.sheet = false
       }
     },

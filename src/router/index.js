@@ -51,7 +51,9 @@ export default new Router({
       name: 'Backlog',
       component: Backlog,
       props: (route) => ({
-        activeBacklogItemId: Number(route.query.active)
+        activeBacklogItemId: Number(route.query.active),
+        queryString: route.query.query,
+        queryListId: Number(route.query.list)
       })
     }
   ]

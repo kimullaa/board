@@ -351,8 +351,23 @@ export default new Vuex.Store({
       .filter(card => card.list === listId)
       .filter(card => card.board)
     },
-    getBacklog: state => {
-      return state.cards.filter(card => !card.board)
+    getBacklog: (state) => (query, list) => {
+      return state.cards
+      .filter(card => !card.board)
+      .filter(card => {
+        if (query) {
+          return card.title.match(query) || card.details.match(query)
+        } else {
+          return true
+        }
+      })
+      .filter(card => {
+        if (!isNaN(list)) {
+          return card.list === list
+        } else {
+          return true
+        }
+      })
     },
     getCard: (state) => (id) => {
       return state.cards.find(card => card.id === id)

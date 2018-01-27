@@ -15,7 +15,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-icon :color="list.color">{{list.icon}}</v-icon>
-      <v-btn @click="moveToBoard">
+      <v-btn @click.native.stop="moveToBoard">
         <v-icon dark class="mr-1">assignment</v-icon>
         取り組む
       </v-btn>
@@ -59,10 +59,15 @@ export default {
       this.$store.commit('moveToBoard', this.item.id)
     },
     changeRoute: function () {
+      var queries = Object.assign({}, this.$route.query)
       if (this.isActive) {
-        this.$router.push(this.$route.path)
+        // 検索条件が消えないように、現在のqueryからactiveだけ取り除く
+        delete queries['active']
+        this.$router.push({query: queries})
       } else {
-        this.$router.push(`${this.$route.path}?active=${this.item.id}`)
+        // 検索条件が消えないように、現在のqueryに混ぜ込む
+        queries.active = this.item.id
+        this.$router.push({query: queries})
       }
     }
   },
