@@ -20,7 +20,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile active-class="active" :to="{path: '/board/lists'}">
+        <v-list-tile :class="{active: $route.path === '/board/lists'}" :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
