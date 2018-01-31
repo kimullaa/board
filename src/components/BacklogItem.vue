@@ -14,7 +14,7 @@
           <v-card-title
           class="title slim"
           >
-          <card-edit-button @click.native.stop :id="item.id"></card-edit-button>
+          <card-edit-button class="slim-btn" @click.native.stop :id="item.id"></card-edit-button>
           {{item.title}}
         </v-card-title>
       </v-flex>
@@ -97,5 +97,9 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 3px
+}
+.slim-btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 </style>
