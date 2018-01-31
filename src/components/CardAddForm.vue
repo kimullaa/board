@@ -14,9 +14,7 @@
         :items="lists"
         item-text="name"
         item-value="id"
-        :rules="listRules"
         label="List"
-        required
         v-model="list"
         >
       </v-select>
@@ -63,9 +61,6 @@ export default {
       details: '',
       titleRules: [
         (v) => !!v || 'Title is required'
-      ],
-      listRules: [
-        (v) => v !== null || 'List is required'
       ]
     }
   },

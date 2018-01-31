@@ -21,7 +21,7 @@
     <v-flex>
       <v-card-actions class="slim">
         <v-spacer></v-spacer>
-        <v-icon :color="list.color">{{list.icon}}</v-icon>
+        <v-icon v-if="list" :color="list.color">{{list.icon}}</v-icon>
         <card-menu @click.native.stop :card="card"></card-menu>
       </v-card-actions>
     </v-flex>

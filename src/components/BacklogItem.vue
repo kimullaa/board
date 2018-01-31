@@ -21,7 +21,7 @@
       <v-flex xs-2>
         <v-card-actions class="slim">
           <v-spacer></v-spacer>
-          <v-icon :color="list.color">{{list.icon}}</v-icon>
+          <v-icon v-if="list" :color="list.color">{{list.icon}}</v-icon>
           <v-btn @click.native.stop="moveToBoard">
             <v-icon dark class="mr-1">assignment</v-icon>
             取り組む

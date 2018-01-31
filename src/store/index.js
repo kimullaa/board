@@ -17,7 +17,7 @@ export default new Vuex.Store({
       },
       {
         id: 1,
-        list: 0,
+        list: null,
         status: 1,
         title: 'sample2',
         details: ' yyyyyyyyy\nzzzzzzzzzzzz',
@@ -35,7 +35,7 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sample1',
         details: 'xxxx \nzzzzzzzzzzzz',
@@ -89,7 +89,7 @@ export default new Vuex.Store({
       },
       {
         id: 9,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -119,7 +119,7 @@ export default new Vuex.Store({
 
       {
         id: 12,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -179,7 +179,7 @@ export default new Vuex.Store({
 
       {
         id: 18,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -229,7 +229,7 @@ export default new Vuex.Store({
 
       {
         id: 23,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
@@ -299,7 +299,7 @@ export default new Vuex.Store({
 
       {
         id: 30,
-        list: 0,
+        list: null,
         status: 0,
         title: 'sampleX',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
