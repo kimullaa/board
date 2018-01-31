@@ -20,7 +20,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :class="{active: $route.path === '/board/lists'}" :to="{path: '/board/lists'}">
+        <v-list-tile exact :class="{active: $route.path === '/board/lists'}" :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -42,7 +42,7 @@
               </v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-icon @click.stop="editDialog = true; selectedId=list.id">edit</v-icon>
+              <list-menu :id="list.id" />
             </v-list-tile-action>
           </v-list-tile>
           <v-divider></v-divider>
@@ -104,9 +104,6 @@
     <v-dialog v-model="addDialog" max-width="500px">
       <list-add-form v-model="addDialog"></list-add-form>
     </v-dialog>
-    <v-dialog v-model="editDialog" max-width="500px">
-      <list-edit-form :id="selectedId" v-model="editDialog"></list-edit-form>
-    </v-dialog>
 
   </v-navigation-drawer>
 </template>
@@ -114,6 +111,7 @@
 <script>
 import ListEditForm from './ListEditForm'
 import ListAddForm from './ListAddForm'
+import ListMenu from './ListMenu'
 
 export default {
   name: 'SideBar',
@@ -136,15 +134,14 @@ export default {
   },
   data () {
     return {
-      editDialog: false,
       addDialog: false,
-      selectedId: null,
       drawer: null
     }
   },
   components: {
     ListEditForm,
-    ListAddForm
+    ListAddForm,
+    ListMenu
   }
 }
 </script>
