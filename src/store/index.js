@@ -438,6 +438,18 @@ export default new Vuex.Store({
     },
     moveToBacklog (state, id) {
       state.cards.find(card => card.id === Number(id)).board = false
+    },
+    deleteList (state, id) {
+      state.lists.some((list, index) => {
+        if (list.id === Number(id)) {
+          state.lists.splice(index, 1)
+        }
+      })
+      state.cards
+      .filter(card => card.list === Number(id))
+      .forEach((card) => {
+        card.list = null
+      })
     }
   }
 })

@@ -4,7 +4,12 @@
       本当に削除しますか？
     </v-card-title>
     <v-card-text>
-      削除後は元に戻せません
+      <p>
+        削除後は元に戻せません
+      </p>
+      <p>
+      削除されたリストが設定されているカードは 設定なし になります
+      </p>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
