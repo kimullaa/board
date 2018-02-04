@@ -340,6 +340,9 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    dumpAll: state => {
+      return state
+    },
     getActiveCardByStatus: (state) => (statusId) => {
       return state.cards
       .filter(card => card.status === statusId)
@@ -383,6 +386,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    importAll (state, target) {
+      state = target
+    },
     changeStatus (state, target) {
       state.cards.find(card => card.id === Number(target.id)).status = Number(target.status)
     },

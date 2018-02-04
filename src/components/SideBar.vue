@@ -87,6 +87,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
         <v-list-tile :exact="true" active-class="active" :to="{path: '/config/lane'}">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
@@ -97,8 +98,29 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-divider></v-divider>
+        <v-list-tile @click="importData">
+          <v-list-tile-action>
+            <v-icon>input</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              インポート
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
+        <v-list-tile @click="exportData">
+          <v-list-tile-action>
+            <v-icon>save</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              エクスポート
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list-group>
-      <v-divider></v-divider>
     </v-list>
 
     <v-dialog v-model="addDialog" max-width="500px">
@@ -142,6 +164,30 @@ export default {
     ListEditForm,
     ListAddForm,
     ListMenu
+  },
+  methods: {
+    exportData: function () {
+      var all = this.$store.getters.dumpAll
+      var blob = new Blob([JSON.stringify(all)], {type: 'application/json'})
+      var a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.target = '_blank'
+      a.download = 'board.json'
+      a.click()
+    },
+    importData: function () {
+      const self = this
+      var a = document.createElement('input')
+      a.type = 'file'
+      a.addEventListener('change', (evt) => {
+        var reader = new FileReader()
+        reader.addEventListener('load', () => {
+          self.$store.commit('importAll', JSON.parse(reader.result))
+        })
+        reader.readAsText(evt.target.files[0])
+      })
+      a.click()
+    }
   }
 }
 </script>
