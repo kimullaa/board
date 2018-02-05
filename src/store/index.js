@@ -387,7 +387,9 @@ export default new Vuex.Store({
   },
   mutations: {
     importAll (state, target) {
-      state = target
+      for (const prop in target) {
+        state[prop] = target[prop]
+      }
     },
     changeStatus (state, target) {
       state.cards.find(card => card.id === Number(target.id)).status = Number(target.status)
