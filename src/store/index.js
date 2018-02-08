@@ -324,6 +324,9 @@ export default new Vuex.Store({
         color: 'grey darken-1'
       }
     ],
+    project: {
+      name: 'sample project'
+    },
     lists: [
       {
         id: 0,
@@ -434,6 +437,9 @@ export default new Vuex.Store({
       state.lists.find(item => item.id === Number(list.id)).name = list.name
       state.lists.find(item => item.id === Number(list.id)).color = list.color
       state.lists.find(item => item.id === Number(list.id)).icon = list.icon
+    },
+    updateProject (state, project) {
+      state.project.name = project.name
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {

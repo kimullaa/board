@@ -4,6 +4,7 @@ import Board from '@/components/Board'
 import Config from '@/components/Config'
 import Backlog from '@/components/Backlog'
 import ConfigLane from '@/components/ConfigLane'
+import ConfigProject from '@/components/ConfigProject'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
           path: 'lane',
           name: 'ConfigLane',
           component: ConfigLane
+        },
+        {
+          path: 'project',
+          name: 'ConfigProject',
+          component: ConfigProject
         }
       ]
     },

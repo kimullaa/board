@@ -7,7 +7,7 @@
   fixed
   app>
   <v-toolbar-side-icon @click.stop="$emit('input', !value)"></v-toolbar-side-icon>
-  <v-toolbar-title class="headline" @click="$router.push('/board')">Kanban Board</v-toolbar-title>
+  <v-toolbar-title class="headline" @click="$router.push('/board')">{{project.name}}</v-toolbar-title>
 </v-toolbar>
 </template>
 
@@ -15,6 +15,11 @@
 
 export default {
   name: 'Header',
+  computed: {
+    project () {
+      return this.$store.state.project
+    }
+  },
   props: {
     value: Boolean
   },

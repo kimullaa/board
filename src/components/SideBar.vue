@@ -88,6 +88,17 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
+        <v-list-tile :exact="true" active-class="active" :to="{path: '/config/project'}">
+          <v-list-tile-action>
+            <v-icon>settings</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              プロジェクト名
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
         <v-list-tile :exact="true" active-class="active" :to="{path: '/config/lane'}">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
@@ -140,6 +151,9 @@ export default {
   computed: {
     lists () {
       return this.$store.state.lists
+    },
+    project () {
+      return this.$store.state.project
     }
   },
   watch: {
@@ -172,7 +186,7 @@ export default {
       var a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
       a.target = '_blank'
-      a.download = 'board.json'
+      a.download = this.project.name + '.json'
       a.click()
     },
     importData: function () {

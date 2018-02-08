@@ -49,8 +49,10 @@ export default {
   },
   methods: {
     submit: function () {
-      this.$store.commit('updateLane', this.statuses)
-      this.$router.push('/board')
+      if (this.$refs.form.validate()) {
+        this.$store.commit('updateLane', this.statuses)
+        this.$router.push('/board')
+      }
     }
   },
   components: {
