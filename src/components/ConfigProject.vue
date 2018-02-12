@@ -32,7 +32,7 @@ export default {
         name: null
       },
       nameRules: [
-        (v) => /[a-zA-Z0-9]+/.test(v) || 'Name must a-Z 0-9'
+        (v) => /^[a-zA-Z0-9_-]+$/.test(v) || '半角英数字で入力してください'
       ]
     }
   },
