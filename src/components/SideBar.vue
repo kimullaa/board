@@ -20,7 +20,7 @@
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile exact :class="{active: $route.path === '/board/lists'}" :to="{path: '/board/lists'}">
+        <v-list-tile exact :to="{path: '/board/lists'}">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
           </v-list-tile-action>
@@ -32,7 +32,7 @@
         </v-list-tile>
         <v-divider></v-divider>
         <template v-for="list in lists">
-          <v-list-tile active-class="active" :to="{path: `/board/lists/${list.id}`}" >
+          <v-list-tile  :to="{path: `/board/lists/${list.id}`}" >
             <v-list-tile-action>
               <v-icon :color="list.color">{{list.icon}}</v-icon>
             </v-list-tile-action>
@@ -77,20 +77,34 @@
       <v-divider></v-divider>
 
       <v-list-group>
-        <v-list-tile active-class="active" :to="{path: '/config'}" slot="item">
+        <v-list-tile :to="{path: '/config'}" slot="item">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              プロジェクトの設定
+              設定
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list-group>
+      
+      <v-divider></v-divider>
+      <v-list-group>
+        <v-list-tile slot="item">
+          <v-list-tile-action>
+            <v-icon>folder</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              プロジェクト
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile active-class="active" :to="{path: '/project'}">
+        <v-list-tile  :to="{path: '/project'}">
           <v-list-tile-action>
-            <v-icon>add_circle_outline</v-icon>
+            <v-icon>create_new_folder</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
@@ -112,7 +126,7 @@
         <v-divider></v-divider>
         <v-list-tile @click="exportData">
           <v-list-tile-action>
-            <v-icon>save</v-icon>
+            <v-icon>file_download</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
@@ -122,7 +136,6 @@
         </v-list-tile>
       </v-list-group>
       <v-divider></v-divider>
-
 
     </v-list>
 
@@ -192,12 +205,12 @@ export default {
           try {
             json = JSON.parse(reader.result)
           } catch (e) {
-            self.$toasted.error('invalid format')
+            self.$toasted.error('不正なフォーマットです')
           }
           if (this.$store.getters.isValidFormat(json)) {
             self.$store.commit('importAll', json)
           } else {
-            self.$toasted.error('invalid format')
+            self.$toasted.error('不正なフォーマットです')
           }
           this.$router.push('/config')
         })
@@ -208,9 +221,3 @@ export default {
   }
 }
 </script>
-
-<style >
-.active {
-  background-color: #d9ecff;
-}
-</style>
