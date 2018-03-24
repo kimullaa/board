@@ -14,7 +14,10 @@
           <v-card-title
           class="title slim"
           >
-          <card-edit-button class="slim-btn" @click.native.stop :id="item.id"></card-edit-button>
+          <card-edit-button
+          class="slim-btn"
+          @click.native.stop :id="item.id"
+          ></card-edit-button>
           {{item.title}}
         </v-card-title>
       </v-flex>
@@ -22,7 +25,7 @@
         <v-card-actions class="slim">
           <v-spacer></v-spacer>
           <v-icon v-if="list" :color="list.color">{{list.icon}}</v-icon>
-          <v-btn @click.native.stop="moveToBoard">
+          <v-btn @click.native.stop="moveToBoard" :disabled="item.board">
             <v-icon dark class="mr-1">assignment</v-icon>
             取り組む
           </v-btn>

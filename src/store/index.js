@@ -357,9 +357,8 @@ export default new Vuex.Store({
       .filter(card => card.list === listId)
       .filter(card => card.board)
     },
-    getBacklog: (state) => (query, list) => {
+    getCards: (state) => (query, list) => {
       return state.cards
-      .filter(card => !card.board)
       .filter(card => {
         if (query) {
           return card.title.match(query) || card.details.match(query)

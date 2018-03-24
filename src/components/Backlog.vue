@@ -16,7 +16,7 @@
         <card-add-button :statusId="0" :board="false"></card-add-button>
       </v-toolbar-title>
     </v-toolbar>
-    
+
     <template v-if="queryString || list">
       <span v-if="queryString">
         絞り込み: 「{{queryString}}」
@@ -61,7 +61,7 @@ export default {
       }
     },
     backlogs () {
-      return this.$store.getters.getBacklog(this.queryString, this.queryListId)
+      return this.$store.getters.getCards(this.queryString, this.queryListId)
     },
     statusId () {
       return this.$store.getters.getInitialLane
