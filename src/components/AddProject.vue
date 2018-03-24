@@ -1,5 +1,16 @@
 <template>
   <v-card>
+      <v-alert
+      color="error"
+      icon="error" :value="!$store.getters.isImported">
+        プロジェクトが存在しません。新規に作成するか、インポートしてください。
+      </v-alert>
+      <v-alert
+      color="warning"
+      icon="warning" :value="$store.getters.isImported">
+        現在のデータは消えてしまいます。<br />
+        プロジェクトはエクスポートしましたか？
+      </v-alert>
     <v-card-title>
       プロジェクトの新規作成
     </v-card-title>
@@ -25,6 +36,9 @@ import template from '../assets/template.json'
 
 export default {
   name: 'AddProject',
+  props: {
+    initial: Boolean
+  },
   data () {
     return {
       valid: false,

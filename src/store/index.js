@@ -13,6 +13,9 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    isImported: (state) => {
+      return state.project.name !== undefined
+    },
     isValidFormat: (state) => (json) => {
       var isValid = true
       for (let prop in state) {

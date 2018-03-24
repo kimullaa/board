@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-2">
+  <div>
     <v-toolbar :color="color" flat dense class="mb-3">
       <v-badge color="blue">
         <span slot="badge">{{numberofCards}}</span>
