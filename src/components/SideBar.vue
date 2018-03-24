@@ -83,7 +83,7 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              システムの設定
+              プロジェクトの設定
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -110,6 +110,17 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
+        <v-list-tile :to="{path: '/project'}">
+          <v-list-tile-action>
+            <v-icon>add_circle_outline</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              新規作成
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
         <v-list-tile @click="importData">
           <v-list-tile-action>
             <v-icon>input</v-icon>
@@ -132,7 +143,6 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list-group>
-
       <v-divider></v-divider>
     </v-list>
 

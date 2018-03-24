@@ -5,6 +5,7 @@ import Config from '@/components/Config'
 import Backlog from '@/components/Backlog'
 import ConfigLane from '@/components/ConfigLane'
 import ConfigProject from '@/components/ConfigProject'
+import AddProject from '@/components/AddProject'
 
 Vue.use(Router)
 
@@ -61,6 +62,11 @@ export default new Router({
         queryString: route.query.query,
         queryListId: Number(route.query.list)
       })
+    },
+    {
+      path: '/project',
+      name: 'AddProject',
+      component: AddProject
     }
   ]
 })

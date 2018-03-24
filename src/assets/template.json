@@ -1,0 +1,24 @@
+{
+  "cards":[],
+  "statuses":[
+    {
+      "id":0,
+      "name":"TODO",
+      "color":"red darken-1"
+    },
+    {
+      "id":1,
+      "name":"DOING",
+      "color":"lime darken-1"
+    },
+    {
+      "id":2,
+      "name":"DONE",
+      "color":"grey darken-1"
+    }
+  ],
+  "project":{
+    "name":"enter your project name"
+  },
+  "lists":[]
+}
