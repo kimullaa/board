@@ -1,9 +1,9 @@
 <template>
   <v-card>
-    <v-card-title>
+    <v-card-title @click="show = !show">
       プロジェクト名 の編集
     </v-card-title>
-    <v-card-text>
+    <v-card-text v-show="show">
       <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <v-layout row wrap>
           <v-flex>
@@ -33,14 +33,15 @@ export default {
       },
       nameRules: [
         (v) => /^[a-zA-Z0-9_-]+$/.test(v) || '半角英数字で入力してください'
-      ]
+      ],
+      show: false
     }
   },
   methods: {
     submit: function () {
       if (this.$refs.form.validate()) {
         this.$store.commit('updateProject', this.project)
-        this.$router.push('/board')
+        this.show = !this.show
       }
     }
   },

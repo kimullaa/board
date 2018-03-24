@@ -1,9 +1,9 @@
 <template>
   <v-card>
-    <v-card-title>
+    <v-card-title @click="show = !show">
       レーン 名前/色 の編集
     </v-card-title>
-    <v-card-text>
+    <v-card-text v-show="show">
       <v-form v-model="valid" ref="form" lazy-validation @submit.prevent="submit">
         <template v-for="(status,index) in statuses">
           <v-layout row wrap>
@@ -44,14 +44,15 @@ export default {
           name: '',
           color: ''
         }
-      ]
+      ],
+      show: false
     }
   },
   methods: {
     submit: function () {
       if (this.$refs.form.validate()) {
         this.$store.commit('updateLane', this.statuses)
-        this.$router.push('/board')
+        this.show = !this.show
       }
     }
   },

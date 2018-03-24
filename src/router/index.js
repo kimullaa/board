@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import Board from '@/components/Board'
 import Config from '@/components/Config'
 import Backlog from '@/components/Backlog'
-import ConfigLane from '@/components/ConfigLane'
-import ConfigProject from '@/components/ConfigProject'
 import AddProject from '@/components/AddProject'
 
 Vue.use(Router)
@@ -39,19 +37,7 @@ export default new Router({
     {
       path: '/config',
       name: 'Config',
-      component: Config,
-      children: [
-        {
-          path: 'lane',
-          name: 'ConfigLane',
-          component: ConfigLane
-        },
-        {
-          path: 'project',
-          name: 'ConfigProject',
-          component: ConfigProject
-        }
-      ]
+      component: Config
     },
     {
       path: '/backlog',

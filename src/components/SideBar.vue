@@ -88,28 +88,6 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile :exact="true" active-class="active" :to="{path: '/config/project'}">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              プロジェクト名
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
-        <v-list-tile :exact="true" active-class="active" :to="{path: '/config/lane'}">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              レーン 名前/色
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
         <v-list-tile :to="{path: '/project'}">
           <v-list-tile-action>
             <v-icon>add_circle_outline</v-icon>
@@ -144,6 +122,8 @@
         </v-list-tile>
       </v-list-group>
       <v-divider></v-divider>
+
+
     </v-list>
 
     <v-dialog v-model="addDialog" max-width="500px">
@@ -209,6 +189,7 @@ export default {
         var reader = new FileReader()
         reader.addEventListener('load', () => {
           self.$store.commit('importAll', JSON.parse(reader.result))
+          this.$router.push('/board')
         })
         reader.readAsText(evt.target.files[0])
       })

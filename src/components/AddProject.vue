@@ -41,7 +41,7 @@ export default {
       var templateProject = JSON.parse(JSON.stringify(template))
       templateProject.project.name = this.project.name
       this.$store.commit('importAll', templateProject)
-      this.$router.push('/board')
+      this.$router.push('/config')
     }
   }
 }
