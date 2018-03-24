@@ -63,20 +63,30 @@ export default {
       }
     },
     decideTargetCardId: function (sourceId) {
+      // Draggableで :list を使っているので
+      // this.cards の順番はドラッグ直後に変わっているため、扱いに注意する
+
       let targetId
+
       // Laneの途中だった場合は、sourceIdの上にある要素を設定する
       for (var i = 0; i < this.cards.length - 1; i++) {
         if (this.cards[i + 1].id === sourceId) {
           targetId = this.cards[i].id
         }
       }
-      // Laneの先頭だった場合は、一番上の要素を設定する
-      // 空のレーンの場合は、順番を入れ替えないように自分自身より一つ優先度の高い要素を設定する
+
       if (!targetId) {
+        // 空のレーンの場合は、順番を入れ替えないように自分自身より一つ優先度の高い要素を設定する
         if (this.cards.length === 1) {
           return this.$store.getters.getBeforeCard(this.cards[0].id).id
+        // Laneの先頭だった場合は、一番上の要素より一つ優先度の高い要素を設定する
         } else {
-          return this.$store.getters.getBeforeCard(this.cards[1].id).id
+          const targetCard = this.$store.getters.getBeforeCard(this.cards[1].id)
+          if (targetCard) {
+            return targetCard.id
+          } else {
+            return undefined
+          }
         }
       } else {
         return targetId

@@ -29,9 +29,17 @@
       </v-btn>
     </template>
 
-    <draggable :list="backlogs" class="backlogs mt-3">
+    <draggable
+    :list="backlogs"
+    class="backlogs mt-3"
+    :options="{group:'backlogs'}"
+    @update="changePriority"
+    >
       <template v-for="backlog in backlogs">
-        <backlog-item :key="backlog.id" :item="backlog" :isActive="activeBacklogItemId === backlog.id" />
+        <backlog-item
+        :key="backlog.id"
+        :item="backlog"
+        :isActive="activeBacklogItemId === backlog.id" />
       </template>
     </draggable>
   </v-flex>
@@ -68,6 +76,28 @@ export default {
     },
     numberofBacklogs () {
       return this.backlogs.length
+    }
+  },
+  methods: {
+    changePriority: function (evt) {
+      // Draggableで :list を使っているので
+      // this.cards の順番はドラッグ直後に変わっているため、扱いに注意する
+      const sourceId = this.backlogs[evt.newIndex].id
+      const targetId = this.desideTargetCardId(sourceId)
+
+      this.$store.commit('changePriority', {
+        from: sourceId,
+        to: targetId
+      })
+    },
+    desideTargetCardId: function (sourceId) {
+      let targetId
+      for (var i = 0; i < this.backlogs.length - 1; i++) {
+        if (this.backlogs[i + 1].id === sourceId) {
+          targetId = this.backlogs[i].id
+        }
+      }
+      return targetId
     }
   },
   data () {

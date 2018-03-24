@@ -392,6 +392,7 @@ export default new Vuex.Store({
           return state.cards[i]
         }
       }
+      return undefined
     }
   },
   mutations: {
@@ -403,7 +404,8 @@ export default new Vuex.Store({
     changeStatus (state, target) {
       state.cards.find(card => card.id === Number(target.id)).status = Number(target.status)
     },
-    // sourceId のカードの優先度を、targetIdの次に設定する
+    // from のカードの優先度を、to の次に設定する
+    // toが設定されていなければ、一番上に設定する
     changePriority (state, swap) {
       let sourceIndex
       for (let i = 0; i < state.cards.length; i++) {
@@ -414,13 +416,18 @@ export default new Vuex.Store({
       const sourceCards = state.cards.splice(sourceIndex, 1)
 
       let targetIndex
-      for (let i = 0; i < state.cards.length; i++) {
-        if (state.cards[i].id === swap.to) {
-          targetIndex = i
-        }
-      }
 
-      state.cards.splice(targetIndex + 1, 0, sourceCards[0])
+      if (swap.to !== undefined) {
+        for (let i = 0; i < state.cards.length; i++) {
+          if (state.cards[i].id === swap.to) {
+            targetIndex = i
+          }
+        }
+        state.cards.splice(targetIndex + 1, 0, sourceCards[0])
+      } else {
+        targetIndex = 0
+        state.cards.splice(0, 0, sourceCards[0])
+      }
     },
     deleteCard (state, id) {
       state.cards.forEach(function (value, index, array) {
