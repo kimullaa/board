@@ -10,7 +10,7 @@ export default new Vuex.Store({
         id: 0,
         list: 0,
         status: 0,
-        title: 'sampleX',
+        title: 'sample0',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: false
@@ -19,7 +19,7 @@ export default new Vuex.Store({
         id: 1,
         list: null,
         status: 1,
-        title: 'sample2',
+        title: 'sample1',
         details: ' yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -37,7 +37,7 @@ export default new Vuex.Store({
         id: 3,
         list: null,
         status: 0,
-        title: 'sample1',
+        title: 'sample3',
         details: 'xxxx \nzzzzzzzzzzzz',
         priority: 0,
         board: false
@@ -46,7 +46,7 @@ export default new Vuex.Store({
         id: 4,
         list: 1,
         status: 1,
-        title: 'sample2',
+        title: 'sample4',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -55,7 +55,7 @@ export default new Vuex.Store({
         id: 5,
         list: 1,
         status: 1,
-        title: 'sample2',
+        title: 'sample5',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -64,7 +64,7 @@ export default new Vuex.Store({
         id: 6,
         list: 1,
         status: 0,
-        title: 'sample1',
+        title: 'sample6',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -73,7 +73,7 @@ export default new Vuex.Store({
         id: 7,
         list: 1,
         status: 1,
-        title: 'sample2',
+        title: 'sample7',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -82,7 +82,7 @@ export default new Vuex.Store({
         id: 8,
         list: 1,
         status: 1,
-        title: 'sample2',
+        title: 'sample8',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -91,7 +91,7 @@ export default new Vuex.Store({
         id: 9,
         list: null,
         status: 0,
-        title: 'sampleX',
+        title: 'sample9',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -101,7 +101,7 @@ export default new Vuex.Store({
         id: 10,
         list: 0,
         status: 0,
-        title: 'sampleX',
+        title: 'sample10',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -111,7 +111,7 @@ export default new Vuex.Store({
         id: 11,
         list: 0,
         status: 0,
-        title: 'sampleX',
+        title: 'sample11',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -121,7 +121,7 @@ export default new Vuex.Store({
         id: 12,
         list: null,
         status: 0,
-        title: 'sampleX',
+        title: 'sample12',
         details: 'xxxx xxxx\nyy yyyyyyyyy\nzzzzzzzzzzzz',
         priority: 0,
         board: true
@@ -386,6 +386,13 @@ export default new Vuex.Store({
     },
     getLastLane: state => {
       return 2
+    },
+    getBeforeCard: (state) => (id) => {
+      for (let i = 0; i < state.cards.length - 1; i++) {
+        if (state.cards[i + 1].id === id) {
+          return state.cards[i]
+        }
+      }
     }
   },
   mutations: {
@@ -396,6 +403,25 @@ export default new Vuex.Store({
     },
     changeStatus (state, target) {
       state.cards.find(card => card.id === Number(target.id)).status = Number(target.status)
+    },
+    // sourceId のカードの優先度を、targetIdの次に設定する
+    changePriority (state, swap) {
+      let sourceIndex
+      for (let i = 0; i < state.cards.length; i++) {
+        if (state.cards[i].id === swap.from) {
+          sourceIndex = i
+        }
+      }
+      const sourceCards = state.cards.splice(sourceIndex, 1)
+
+      let targetIndex
+      for (let i = 0; i < state.cards.length; i++) {
+        if (state.cards[i].id === swap.to) {
+          targetIndex = i
+        }
+      }
+
+      state.cards.splice(targetIndex + 1, 0, sourceCards[0])
     },
     deleteCard (state, id) {
       state.cards.forEach(function (value, index, array) {

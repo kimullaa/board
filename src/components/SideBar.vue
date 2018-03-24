@@ -132,6 +132,8 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list-group>
+
+      <v-divider></v-divider>
     </v-list>
 
     <v-dialog v-model="addDialog" max-width="500px">

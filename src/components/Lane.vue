@@ -11,7 +11,11 @@
       <card-add-button :statusId="id" :listId="listId" :board="true"></card-add-button>
     </v-toolbar>
     <!-- HACK: Vue.draggableで移動元のstatusを渡すためにstatusのidを埋め込む -->
-    <draggable :list="cards" :options="{group:'card'}" @update="changePriority" @add="fromOtherLane" class="cards">
+    <draggable :list="cards"
+    :options="{group:'cards'}"
+    @update="changePriority"
+    @add="fromOtherLane"
+    class="cards">
       <template v-for="card in cards">
         <card :key="card.id" :card="card" :isActive="card.id === activeCardId"/>
       </template>
@@ -35,9 +39,11 @@ export default {
   },
   computed: {
     cards () {
+      // リストが選択されていない場合
       if (isNaN(this.listId)) {
         return this.$store.getters.getActiveCardByStatus(this.id)
       } else {
+        // リストが選択されている場合
         return this.$store.getters.getActiveCardByStatusAndList(this.id, this.listId)
       }
     },
@@ -47,9 +53,37 @@ export default {
   },
   methods: {
     changePriority: function (evt) {
-      console.log('change priority')
+      const sourceId = Number(evt.item.id.split('card-')[1])
+      const targetId = this.decideTargetCardId(sourceId)
+      if (this.cards.length !== 1) {
+        this.$store.commit('changePriority', {
+          from: sourceId,
+          to: targetId
+        })
+      }
+    },
+    decideTargetCardId: function (sourceId) {
+      let targetId
+      // Laneの途中だった場合は、sourceIdの上にある要素を設定する
+      for (var i = 0; i < this.cards.length - 1; i++) {
+        if (this.cards[i + 1].id === sourceId) {
+          targetId = this.cards[i].id
+        }
+      }
+      // Laneの先頭だった場合は、一番上の要素を設定する
+      // 空のレーンの場合は、順番を入れ替えないように自分自身より一つ優先度の高い要素を設定する
+      if (!targetId) {
+        if (this.cards.length === 1) {
+          return this.$store.getters.getBeforeCard(this.cards[0].id).id
+        } else {
+          return this.$store.getters.getBeforeCard(this.cards[1].id).id
+        }
+      } else {
+        return targetId
+      }
     },
     fromOtherLane: function (evt) {
+      this.changePriority(evt)
       this.$store.commit('changeStatus', {
         id: evt.item.id.split('card-')[1],
         status: this.id
