@@ -88,7 +88,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile :to="{path: '/project'}">
+        <v-list-tile active-class="active" :to="{path: '/project'}">
           <v-list-tile-action>
             <v-icon>add_circle_outline</v-icon>
           </v-list-tile-action>
@@ -188,8 +188,18 @@ export default {
       a.addEventListener('change', (evt) => {
         var reader = new FileReader()
         reader.addEventListener('load', () => {
-          self.$store.commit('importAll', JSON.parse(reader.result))
-          this.$router.push('/board')
+          let json
+          try {
+            json = JSON.parse(reader.result)
+          } catch (e) {
+            self.$toasted.error('invalid format')
+          }
+          if (this.$store.getters.isValidFormat(json)) {
+            self.$store.commit('importAll', json)
+          } else {
+            self.$toasted.error('invalid format')
+          }
+          this.$router.push('/config')
         })
         reader.readAsText(evt.target.files[0])
       })

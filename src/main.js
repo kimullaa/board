@@ -5,11 +5,15 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
+import Toasted from 'vue-toasted'
 
 import('../node_modules/vuetify/dist/vuetify.min.css')
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+Vue.use(Toasted, {
+  duration: 2000
+})
 
 /* eslint-disable no-new */
 new Vue({

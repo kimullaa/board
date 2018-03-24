@@ -13,6 +13,13 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    isValidFormat: (state) => (json) => {
+      var isValid = true
+      for (let prop in state) {
+        isValid = isValid && json.hasOwnProperty(prop)
+      }
+      return isValid
+    },
     dumpAll: state => {
       return state
     },
