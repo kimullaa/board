@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     lists: [
     ]
   },
+  plugins: [createPersistedState()],
   getters: {
     isImported: (state) => {
       return state.project.name !== undefined
