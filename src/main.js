@@ -14,7 +14,9 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 
 Vue.use(Toasted, {
-  duration: 2000
+  duration: 2000,
+  fullWidth: true,
+  position: 'bottom-center'
 })
 
 /* eslint-disable no-new */

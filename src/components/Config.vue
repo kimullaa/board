@@ -1,9 +1,9 @@
 <template>
   <v-layout row wrap>
-    <v-flex xs12>
+    <v-flex xs12 mb-3>
       <config-project></config-project>
     </v-flex>
-    <v-flex xs12 mt-3>
+    <v-flex xs12 mb-3>
       <config-lane></config-lane>
     </v-flex>
   </v-layout>

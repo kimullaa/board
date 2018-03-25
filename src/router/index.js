@@ -4,7 +4,7 @@ import Board from '@/components/Board'
 import Config from '@/components/Config'
 import store from '../store'
 import Backlog from '@/components/Backlog'
-import AddProject from '@/components/AddProject'
+import Project from '@/components/Project'
 
 Vue.use(Router)
 
@@ -52,8 +52,8 @@ const router = new Router({
     },
     {
       path: '/project',
-      name: 'AddProject',
-      component: AddProject
+      name: 'Project',
+      component: Project
     }
   ]
 })
@@ -63,6 +63,7 @@ router.beforeEach((to, from, next) => {
   if (store.getters.isImported || to.path === '/project') {
     next()
   } else {
+    Vue.toasted.error('プロジェクトが存在しません')
     next('/project')
   }
 })

@@ -1,20 +1,9 @@
 <template>
   <v-card>
-      <v-alert
-      color="error"
-      icon="error" :value="!$store.getters.isImported">
-        プロジェクトが存在しません。新規に作成するか、インポートしてください。
-      </v-alert>
-      <v-alert
-      color="warning"
-      icon="warning" :value="$store.getters.isImported">
-        現在のデータは消えてしまいます。<br />
-        プロジェクトはエクスポートしましたか？
-      </v-alert>
-    <v-card-title>
-      プロジェクトの新規作成
+    <v-card-title @click="show =!show">
+      新規作成
     </v-card-title>
-    <v-card-text>
+    <v-card-text v-show="show">
       <v-form
       v-model="valid" ref="form" lazy-validation
       @submit.prevent="createProject"
@@ -35,7 +24,7 @@
 import template from '../assets/template.json'
 
 export default {
-  name: 'AddProject',
+  name: 'ProjectAdd',
   props: {
     initial: Boolean
   },
@@ -47,7 +36,8 @@ export default {
       },
       nameRules: [
         (v) => /^[a-zA-Z0-9_-]+$/.test(v) || '半角英数字で入力してください'
-      ]
+      ],
+      show: false
     }
   },
   methods: {
@@ -55,7 +45,8 @@ export default {
       var templateProject = JSON.parse(JSON.stringify(template))
       templateProject.project.name = this.project.name
       this.$store.commit('importAll', templateProject)
-      this.$router.push('/board')
+      this.show = !this.show
+      this.$router.push('/project')
     }
   }
 }

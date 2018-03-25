@@ -78,18 +78,22 @@ export default {
       if (!targetId) {
         // 空のレーンの場合は、順番を入れ替えないように自分自身より一つ優先度の高い要素を設定する
         if (this.cards.length === 1) {
-          return this.$store.getters.getBeforeCard(this.cards[0].id).id
+          this.getBeforeCard(this.cards[0].id)
+
         // Laneの先頭だった場合は、一番上の要素より一つ優先度の高い要素を設定する
         } else {
-          const targetCard = this.$store.getters.getBeforeCard(this.cards[1].id)
-          if (targetCard) {
-            return targetCard.id
-          } else {
-            return undefined
-          }
+          this.getBeforeCard(this.cards[1].id)
         }
       } else {
         return targetId
+      }
+    },
+    getBeforeCard: function (id) {
+      const card = this.$store.getters.getBeforeCard(id)
+      if (card) {
+        return card.id
+      } else {
+        return undefined
       }
     },
     fromOtherLane: function (evt) {
