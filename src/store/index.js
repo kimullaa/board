@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import uuid from 'uuid/v4'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -43,13 +44,13 @@ export default new Vuex.Store({
       return state.cards
       .filter(card => {
         if (query) {
-          return card.title.match(query) || card.details.match(query)
+          return query.match(card.title) || query.match(card.details)
         } else {
           return true
         }
       })
       .filter(card => {
-        if (!isNaN(list)) {
+        if (list) {
           return card.list === list
         } else {
           return true
@@ -84,7 +85,7 @@ export default new Vuex.Store({
       }
     },
     changeStatus (state, target) {
-      state.cards.find(card => card.id === Number(target.id)).status = Number(target.status)
+      state.cards.find(card => card.id === target.id).status = Number(target.status)
     },
     // from のカードの優先度を、to の次に設定する
     // toが設定されていなければ、一番上に設定する
@@ -113,7 +114,7 @@ export default new Vuex.Store({
     },
     deleteCard (state, id) {
       state.cards.forEach(function (value, index, array) {
-        if (value.id === Number(id)) {
+        if (value.id === id) {
           array.splice(index, 1)
         }
       })
@@ -126,7 +127,7 @@ export default new Vuex.Store({
     },
     createCard (state, card) {
       state.cards.push({
-        id: Math.floor(Math.random() * 10000), // 適当にidふる
+        id: uuid(),
         title: card.title,
         details: card.details,
         status: card.status,
@@ -135,46 +136,46 @@ export default new Vuex.Store({
       })
     },
     updateCard (state, card) {
-      state.cards.find(item => item.id === Number(card.id)).title = card.title
-      state.cards.find(item => item.id === Number(card.id)).details = card.details
-      state.cards.find(item => item.id === Number(card.id)).list = card.list
+      state.cards.find(item => item.id === card.id).title = card.title
+      state.cards.find(item => item.id === card.id).details = card.details
+      state.cards.find(item => item.id === card.id).list = card.list
     },
     createList (state, list) {
       state.lists.push({
-        id: Math.floor(Math.random() * 10000), // 適当にidふる
+        id: uuid(),
         name: list.name,
         color: list.color,
         icon: list.icon
       })
     },
     updateList (state, list) {
-      state.lists.find(item => item.id === Number(list.id)).name = list.name
-      state.lists.find(item => item.id === Number(list.id)).color = list.color
-      state.lists.find(item => item.id === Number(list.id)).icon = list.icon
+      state.lists.find(item => item.id === list.id).name = list.name
+      state.lists.find(item => item.id === list.id).color = list.color
+      state.lists.find(item => item.id === list.id).icon = list.icon
     },
     updateProject (state, project) {
       state.project.name = project.name
     },
     updateLane (state, statuses) {
       statuses.forEach(function (status) {
-        state.statuses.find(item => item.id === Number(status.id)).name = status.name
-        state.statuses.find(item => item.id === Number(status.id)).color = status.color
+        state.statuses.find(item => item.id === status.id).name = status.name
+        state.statuses.find(item => item.id === status.id).color = status.color
       })
     },
     moveToBoard (state, id) {
-      state.cards.find(card => card.id === Number(id)).board = true
+      state.cards.find(card => card.id === id).board = true
     },
     moveToBacklog (state, id) {
-      state.cards.find(card => card.id === Number(id)).board = false
+      state.cards.find(card => card.id === id).board = false
     },
     deleteList (state, id) {
       state.lists.some((list, index) => {
-        if (list.id === Number(id)) {
+        if (list.id === id) {
           state.lists.splice(index, 1)
         }
       })
       state.cards
-      .filter(card => card.list === Number(id))
+      .filter(card => card.list === id)
       .forEach((card) => {
         card.list = null
       })

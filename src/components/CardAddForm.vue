@@ -35,13 +35,13 @@ export default {
   props: {
     value: Boolean,
     statusId: Number,
-    defaultList: Number,
+    defaultList: String,
     board: Boolean
   },
   watch: {
     value: function () {
       this.clear()
-      if (isNaN(this.defaultList)) {
+      if (!this.defaultList) {
         this.list = null
       } else {
         this.list = this.defaultList

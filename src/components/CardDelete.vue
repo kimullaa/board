@@ -18,7 +18,7 @@
 export default {
   name: 'CardDelete',
   props: {
-    id: Number,
+    id: String,
     value: Boolean
   },
   methods: {

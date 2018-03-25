@@ -13,7 +13,7 @@ import CardEditForm from './CardEditForm.vue'
 export default {
   name: 'CardEditButton',
   props: {
-    id: Number
+    id: String
   },
   data () {
     return {

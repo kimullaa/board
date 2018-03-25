@@ -51,7 +51,7 @@ export default {
   name: 'Card',
   props: {
     card: {
-      id: Number,
+      id: String,
       title: String,
       status: Number,
       details: String,

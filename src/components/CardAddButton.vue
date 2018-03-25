@@ -17,7 +17,7 @@ export default {
   props: {
     statusId: Number,
     board: Boolean,
-    listId: Number
+    listId: String
   },
   components: {
     CardAddForm

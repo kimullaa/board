@@ -23,7 +23,7 @@
 export default {
   name: 'ListDelete',
   props: {
-    id: Number,
+    id: String,
     value: Boolean
   },
   methods: {

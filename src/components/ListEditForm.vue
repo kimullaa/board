@@ -67,7 +67,7 @@ import IconPicker from './IconPicker.vue'
 export default {
   name: 'ListEditForm',
   props: {
-    id: Number,
+    id: String,
     value: Boolean
   },
   computed: {

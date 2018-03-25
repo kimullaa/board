@@ -57,7 +57,7 @@ export default {
   name: 'CardMenu',
   props: {
     card: {
-      id: Number,
+      id: String,
       title: String,
       status: Number,
       details: String

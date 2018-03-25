@@ -34,13 +34,13 @@ export default {
     color: String,
     title: String,
     id: Number,
-    listId: Number,
-    activeCardId: Number
+    listId: String,
+    activeCardId: String
   },
   computed: {
     cards () {
       // リストが選択されていない場合
-      if (isNaN(this.listId)) {
+      if (!this.listId) {
         return this.$store.getters.getActiveCardByStatus(this.id)
       } else {
         // リストが選択されている場合

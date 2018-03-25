@@ -38,7 +38,7 @@ import ListEditForm from './ListEditForm'
 export default {
   name: 'ListMenu',
   props: {
-    id: Number
+    id: String
   },
   data () {
     return {

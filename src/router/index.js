@@ -23,8 +23,8 @@ const router = new Router({
       name: 'Board',
       component: Board,
       props: (route) => ({
-        activeCardId: Number(route.query.active),
-        activeListId: Number(route.params.id)
+        activeCardId: route.query.active,
+        activeListId: route.params.id
       })
     },
     {
@@ -32,7 +32,7 @@ const router = new Router({
       name: 'Board',
       component: Board,
       props: (route) => ({
-        activeCardId: Number(route.query.active)
+        activeCardId: route.query.active
       })
     },
     {
@@ -45,9 +45,9 @@ const router = new Router({
       name: 'Backlog',
       component: Backlog,
       props: (route) => ({
-        activeBacklogItemId: Number(route.query.active),
+        activeBacklogItemId: route.query.active,
         queryString: route.query.query,
-        queryListId: Number(route.query.list)
+        queryListId: route.query.list
       })
     },
     {

@@ -58,7 +58,7 @@ export default {
   name: 'BacklogItem',
   props: {
     item: {
-      id: Number,
+      id: String,
       title: String,
       status: Number,
       details: String,

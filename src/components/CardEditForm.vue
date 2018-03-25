@@ -32,7 +32,7 @@
 export default {
   name: 'CardEditForm',
   props: {
-    id: Number,
+    id: String,
     value: Boolean
   },
   computed: {

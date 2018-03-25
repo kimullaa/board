@@ -56,9 +56,9 @@ import BacklogItemSearch from './BacklogItemSearch'
 export default {
   name: 'Backlog',
   props: {
-    activeBacklogItemId: Number,
+    activeBacklogItemId: String,
     queryString: String,
-    queryListId: Number
+    queryListId: String
   },
   computed: {
     list () {
