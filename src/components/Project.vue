@@ -9,7 +9,7 @@
       <v-alert
         color="warning"
         icon="warning" :value="$store.getters.isImported">
-        『新規作成』および『エクスポート』すると、現在のデータは消えます。<br />
+        『新規作成』および『インポート』すると、現在のデータは消えます。<br />
         必ずプロジェクトをエクスポートしてください。
       </v-alert>
     </v-flex>
